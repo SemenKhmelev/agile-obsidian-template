@@ -1,0 +1,8 @@
+{
+  "pinned": [
+    "templater-obsidian:_templates/time-spent-comment-template.md",
+    "obsidian-git:pull",
+    "obsidian-git:push",
+    "obsidian-kanban:toggle-kanban-view"
+  ]
+}

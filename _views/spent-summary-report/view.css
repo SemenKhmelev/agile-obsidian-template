@@ -1,0 +1,11 @@
+.markdown-rendered thead > tr > th {
+    white-space: nowrap;
+}
+
+.table-view-table_ {
+   width: unset !important;
+}
+
+table tr td:not(:first-child) {
+	text-align: left; 
+}

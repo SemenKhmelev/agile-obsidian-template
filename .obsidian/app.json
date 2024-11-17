@@ -1,0 +1,16 @@
+{
+  "promptDelete": false,
+  "attachmentFolderPath": "/",
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "junk/",
+    "_templates/predefined tasks/"
+  ],
+  "showUnsupportedFiles": true,
+  "defaultViewMode": "source",
+  "livePreview": true,
+  "foldHeading": false,
+  "showLineNumber": true,
+  "foldIndent": false,
+  "readableLineLength": false
+}

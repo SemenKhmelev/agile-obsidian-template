@@ -1,0 +1,5 @@
+{
+  "template": "_templates/daily-time-tracking-file-template",
+  "autorun": false,
+  "folder": "sprint2/comments"
+}

@@ -1,0 +1,10 @@
+{
+  "types": {
+    "aliases": "aliases",
+    "cssclasses": "multitext",
+    "tags": "tags",
+    "автор": "multitext",
+    "estimate": "number",
+    "sprint": "multitext"
+  }
+}
