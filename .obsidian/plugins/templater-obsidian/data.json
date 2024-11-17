@@ -1,0 +1,36 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "",
+  "templates_pairs": [
+    [
+      "",
+      ""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": true,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "_scripts",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "sprint1/comments",
+      "template": "_templates/Шаблон файла дневного учета времени.md"
+    },
+    {
+      "folder": "",
+      "template": ""
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": false,
+  "enabled_templates_hotkeys": [
+    "_templates/Шаблон комментария о времени.md",
+    "_templates/шаблон с мультикоретками.md"
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "enable_ribbon_icon": true
+}
