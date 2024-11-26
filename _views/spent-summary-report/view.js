@@ -33,9 +33,9 @@ const lastSprintDate = new Date(Math.max(...dates))
 
 const formatDate = (date) => {	
     const daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']; 
-	const dayOfWeekIndex = (date.getDay() + 6) % 7;
+	const dayOfWeekIndex = date.getDay();
 	const dayOfMonth = date.getDate();
-	const monthIndex = date.getMonth(); 
+	const monthIndex = date.getMonth() + 1;
 	const formattedDate = `${dayOfMonth < 10 ? '0' : ''}${dayOfMonth}.${monthIndex < 10 ? '0' : ''}${monthIndex}\n${daysOfWeek[dayOfWeekIndex]}`; 
 	
 	return formattedDate; 
