@@ -15,8 +15,12 @@ function getRawSprintCommentData(dvarg, sprintFolder) {
     
     let listItemsFromAllComments = commentPages.flatMap(page => page.file.lists).filter(listItem => listItem.cardref)   
     let getDateFromFileName = (fileName) => {
-      const parts = fileName.split('-')
-      return new Date(parts[0], parts[1] - 1, parts[2])
+      const parts = fileName.split('-');
+      let date = new Date(parts[0], parts[1] - 1, parts[2]);
+      if (!(date instanceof Date) || isNaN(date)) {
+        console.error("Invalid filename of comment: ", fileName);
+      }
+      return date;
     }
     
     let rawData = listItemsFromAllComments
