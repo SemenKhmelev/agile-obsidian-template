@@ -16,7 +16,7 @@ function getRawSprintCommentData(dvarg, sprintFolder) {
     let listItemsFromAllComments = commentPages.flatMap(page => page.file.lists).filter(listItem => listItem.cardref)   
     let getDateFromFileName = (fileName) => {
       const parts = fileName.split('-')
-      return new Date(parts[0], parts[1], parts[2])
+      return new Date(parts[0], parts[1] - 1, parts[2])
     }
     
     let rawData = listItemsFromAllComments
