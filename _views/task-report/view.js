@@ -15,6 +15,8 @@ const boardCards = dv.page(`${sprintFolderName}/board.md`).file.lists;
 // const taskPages = dv.pages(`"${folderName.slice(0,folderName.lastIndexOf("/"))}/tasks"`)
 const taskSumdata = []
 
+const stateSumdata = new Map();
+
 tasks.forEach( rec => {	
     let spentSummary =  parseFloat(Array.from(rec.listItems).reduce((acc, item) => acc + item.spent, 0).toFixed(1))
     console.log(spentSummary)
@@ -28,6 +30,13 @@ tasks.forEach( rec => {
             console.log(boardCard.header.subpath + " " + rec.page.file.name);
             isDone = boardCard.header.subpath == "done";
             boardColumnName = boardCard.header.subpath;
+
+            if (stateSumdata.has(boardColumnName)) {
+                stateSumdata.set(boardColumnName, [stateSumdata.get(boardColumnName)[0] + estimate, stateSumdata.get(boardColumnName)[1] + spentSummary]);
+            } else {
+                stateSumdata.set(boardColumnName, [estimate, spentSummary]);
+            }
+
             break;
         }
     }
@@ -51,3 +60,7 @@ dv.header(2, "Задачи спринта")
 dv.table(["Задача", "Estimate", "Spent", "Исполнители", "State"], 
     dv.array(taskSumdata.filter(d => !d[5])).sort(d => parseFloat(d[6]), "desc").map(d => d.slice(0,5))
 )
+
+
+dv.header(2, "Суммарно по состояниям задач");
+dv.table(["State", "Estimate summary", "Spent summary"], Array.from(stateSumdata, ([name, value]) => ([ name, value[0], value[1]]))); 
