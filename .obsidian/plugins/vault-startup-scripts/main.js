@@ -17,6 +17,7 @@ const STARTUP_SCRIPTS = [
     "_scripts/kanbanLaneColumns.js",
     "_scripts/kanbanUserFeed.js",
     "_scripts/kanbanBoardSpentSync.js",
+    "_scripts/commentDateSeparator.js",
 ];
 
 module.exports = class VaultStartupScriptsPlugin extends Plugin {

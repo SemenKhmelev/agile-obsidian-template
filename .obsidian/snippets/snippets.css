@@ -557,3 +557,38 @@ body:not(.native-scrollbars) .kanban-plugin__scroll-container::-webkit-scrollbar
     text-overflow: ellipsis;
     -webkit-line-clamp: unset;
 }
+
+/* === File Explorer: горизонтальный разделитель между днями в comments === */
+.nav-file-title.date-group-first {
+    margin-top: 12px;
+    padding-top: 10px;
+    position: relative;
+}
+
+/* Линия начинается от левого края с отступом 40px */
+.nav-file-title.date-group-first::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 40px;
+    right: 0;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Дата слева на линии — фон маскирует линию под текстом */
+.nav-file-title.date-group-first::before {
+    content: attr(data-date);
+    position: absolute;
+    top: 0;
+    left: 44px;
+    transform: translateY(-50%);
+    font-size: 0.72em;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--text-muted);
+    background: var(--background-secondary);
+    padding: 0 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+}
