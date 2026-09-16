@@ -1,6 +1,9 @@
 ---
 
 kanban-plugin: basic
+lane-columns:
+  done: 2
+card-clamp: true
 
 ---
 

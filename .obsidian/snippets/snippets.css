@@ -428,3 +428,132 @@ body:not(.native-scrollbars) .kanban-plugin__scroll-container::-webkit-scrollbar
 .kanban-plugin__meta-table td.kanban-plugin__meta-key[data-key="spentsum"] {
     display: none; /* дробь говорит сама за себя, значок не нужен */
 }
+
+/* === Kanban: внутренние столбцы карточек (lane-columns во frontmatter) ===
+   Атрибуты и переменные выставляет _scripts/kanbanLaneColumns.js.
+   Порядок заполнения — сверху вниз, затем следующий столбец слева направо:
+   это CSS multi-column (column-count), а не grid. Порядок DOM сохраняется.
+   Глобальный something-is-dragging находится на .kanban-plugin:
+   на время DnD возвращаем обычную ширину и вертикальный список. */
+.kanban-plugin:not(.something-is-dragging)
+    .kanban-plugin__board.kanban-plugin__horizontal:not(.kanban-lanes-single)
+    .kanban-plugin__lane-wrapper[data-lane-columns]:not(.collapse-horizontal) {
+    width: calc(var(--kanban-lane-base-width, 272px) * var(--lane-columns) + 8px * (var(--lane-columns) - 1)) !important;
+}
+
+.kanban-plugin:not(.something-is-dragging)
+    .kanban-plugin__board.kanban-plugin__horizontal:not(.kanban-lanes-single)
+    .kanban-plugin__lane-wrapper[data-lane-columns]:not(.collapse-horizontal) .kanban-plugin__lane-items {
+    display: block;
+    column-count: var(--lane-columns);
+    column-gap: 8px;
+    column-fill: balance; /* столбцы выравниваются по высоте, порядок — сверху вниз */
+}
+
+.kanban-plugin:not(.something-is-dragging)
+    .kanban-plugin__board.kanban-plugin__horizontal:not(.kanban-lanes-single)
+    .kanban-plugin__lane-wrapper[data-lane-columns]:not(.collapse-horizontal) .kanban-plugin__lane-items > div {
+    break-inside: avoid; /* карточка не рвётся между столбцами */
+    min-width: 0;
+}
+
+/* В пустой колонке нативная область добавления занимает все столбцы. */
+.kanban-plugin:not(.something-is-dragging)
+    .kanban-plugin__board.kanban-plugin__horizontal:not(.kanban-lanes-single)
+    .kanban-plugin__lane-wrapper[data-lane-columns]:not(.collapse-horizontal)
+    .kanban-plugin__lane-items > .kanban-plugin__placeholder:only-child {
+    column-span: all;
+}
+
+/* Кнопки под аватарками: верх панели 14px + её высота + зазор 8px.
+   Высоту панели (зависит от числа участников) kanbanLaneColumns.js пишет в
+   --kanban-filter-bar-height; запасное значение 136px — панель из 4 аватарок:
+   4 × 25px + 3 × 6px + 16px padding + 2px border.
+   left 14px выравнивает кнопки с аватарками (8px + 5px padding + 1px border). */
+.kanban-lanes-toggle,
+.kanban-card-clamp-toggle,
+.kanban-card-oneline-toggle {
+    position: absolute;
+    top: calc(14px + var(--kanban-filter-bar-height, 136px) + 8px + var(--kanban-board-toggle-offset, 0px));
+    left: 14px;
+    z-index: 20;
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-secondary);
+    color: var(--text-muted);
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: top 0.2s ease;
+}
+
+.kanban-card-clamp-toggle {
+    --kanban-board-toggle-offset: 31px;
+}
+
+.kanban-card-oneline-toggle {
+    --kanban-board-toggle-offset: 62px;
+}
+
+/* Открытый поиск сдвигает панель аватарок на 50px — кнопки следуют за ней. */
+.view-content:has(.kanban-plugin__search-wrapper)
+    > :is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle) {
+    top: calc(64px + var(--kanban-filter-bar-height, 136px) + 8px + var(--kanban-board-toggle-offset, 0px));
+}
+
+:is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle):hover:not(:disabled) {
+    border-color: var(--interactive-accent);
+    color: var(--text-normal);
+    background: var(--background-modifier-hover);
+}
+
+:is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle).active:not(:disabled) {
+    box-shadow: 0 0 0 2px var(--interactive-accent);
+    color: var(--text-accent);
+}
+
+:is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle):focus-visible {
+    outline: 2px solid var(--interactive-accent);
+    outline-offset: 2px;
+}
+
+:is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle):disabled {
+    color: var(--text-faint);
+    cursor: default;
+}
+
+:is(.kanban-lanes-toggle, .kanban-card-clamp-toggle, .kanban-card-oneline-toggle)[hidden] {
+    display: none;
+}
+
+/* Обрезаем только ссылку заголовка: теги могут находиться в том же абзаце.
+   Промежуточный markdown-preview-view создают Ll/Sa/WS плагина Kanban. */
+.kanban-plugin__board.kanban-cards-clamped
+    .kanban-plugin__item-markdown > .kanban-plugin__markdown-preview-view
+    > p:first-child > a.kanban-card-title-link {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--card-clamp-lines);
+    overflow: hidden;
+}
+
+/* Одна строка без переноса слов, с многоточием (кнопка «в одну строку»
+   или card-oneline во frontmatter). Стоит после многострочной обрезки и
+   побеждает её, если включены обе. */
+.kanban-plugin__board.kanban-cards-oneline
+    .kanban-plugin__item-markdown > .kanban-plugin__markdown-preview-view
+    > p:first-child > a.kanban-card-title-link {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: unset;
+}
