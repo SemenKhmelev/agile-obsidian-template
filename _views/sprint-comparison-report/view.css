@@ -1,0 +1,332 @@
+.table-view-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #D2D7DB;
+}
+
+/* Заголовки таблицы */
+.table-view-thead {
+    background-color: #E1EFFF;
+    color: #333;
+}
+
+.table-view-tr-header th {
+    padding: 8px 14px;
+    text-align: left;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+}
+
+/* Ячейки таблицы */
+.table-view-tbody tr {
+    border-bottom: 1px solid #D2D7DB;
+    transition: background-color 0.2s;
+}
+
+.table-view-tbody tr:nth-child(even) {
+    background-color: #F0F7FC;
+}
+
+.table-view-tbody td {
+    padding: 8px 14px;
+    vertical-align: top;
+}
+
+/* Контейнер диаграммы */
+.chart-container {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Строки задач */
+.task-row {
+    margin-bottom: 20px;
+}
+
+.task-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Полоски спринтов */
+.sprint-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sprint-bar {
+    display: flex;
+    align-items: center;
+}
+
+.sprint-label {
+    min-width: 80px;
+    font-size: 0.9em;
+}
+
+.bar-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    position: relative; /* Добавлено для лучшего контроля позиционирования */
+}
+
+.bar {
+    height: 20px;
+    min-width: 2px;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.bar-label {
+    margin-left: 6px;
+    font-size: 0.7em;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Легенда */
+.legend {
+    display: flex;
+    margin-bottom: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.legend-note {
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+.legend-note p {
+    margin: 0;
+}
+
+/* Секция с выводами */
+.conclusions-container {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.conclusions-container h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+}
+
+.conclusion-section {
+    margin-bottom: 20px;
+}
+
+.conclusion-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #444;
+    font-size: 1.1em;
+}
+
+.conclusion-section p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.conclusion-section ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.conclusion-section li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* Индикаторы тренда */
+.trend-up {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+.trend-down {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+/* Индикаторы статуса */
+.warning {
+    color: #e74c3c;
+    margin-right: 4px;
+}
+
+.info {
+    color: #3498db;
+    margin-right: 4px;
+}
+
+.success {
+    color: #27ae60;
+    margin-right: 4px;
+}
+
+/* Поддержка тёмной темы */
+@media (prefers-color-scheme: dark) {
+    .table-view-table {
+        background-color: #1e1e1e;
+        border-color: #3a3a3a;
+        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+    }
+
+    .table-view-thead {
+        background-color: #2a2f4a;
+        color: #ffffff;
+    }
+
+    .table-view-tbody tr {
+        border-bottom: 1px solid #3a3a3a;
+    }
+
+    .table-view-tbody tr:nth-child(even) {
+        background-color: #2b2b2b;
+    }
+
+    .task-name {
+        color: #e0e0e0;
+    }
+
+    .sprint-label {
+        color: #e0e0e0;
+    }
+
+    .bar-label {
+        color: #e0e0e0;
+    }
+
+    .legend-note {
+        color: #aaa;
+    }
+
+    /* Тёмная тема для секции с выводами */
+    .conclusions-container {
+        background-color: #2d2d2d;
+        border-color: #3a3a3a;
+        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+    }
+
+    .conclusions-container h3 {
+        color: #e0e0e0;
+        border-bottom-color: #444;
+    }
+
+    .conclusion-section h4 {
+        color: #ccc;
+    }
+
+    .conclusion-section p,
+    .conclusion-section li {
+        color: #bbb;
+    }
+
+    /* Индикаторы статуса в тёмной теме – те же цвета для контраста */
+    .trend-up {
+        color: #ff6b6b; /* Ярко-красный для лучшей видимости */
+    }
+
+    .trend-down {
+        color: #6ddf88; /* Ярко-зелёный для лучшей видимости */
+    }
+
+    .warning {
+        color: #ff6b6b;
+    }
+
+    .info {
+        color: #6caeff;
+    }
+
+    .success {
+        color: #6ddf88;
+    }
+}
+
+/* Улучшенный трек бар-чарта с визуализацией план vs факт */
+.bar-track {
+    position: relative;
+    flex-grow: 1;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #f3f6f9; /* фон трека */
+    overflow: hidden;
+}
+
+.bar-estimate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #cfe4ff; /* светло-голубой — план */
+    border-right: 1px solid #9bbbe0; /* граница плана */
+}
+
+.bar-spent-ok {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #4CAF50; /* в пределах плана */
+}
+
+.bar-overspend {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0; /* переопределяется inline — начало от конца плана */
+    background-color: #e74c3c; /* динамически задаваемый оттенок может переопределяться inline */
+}
+
+/* Улучшение отступов при использовании нового трека */
+.bar-container {
+    gap: 6px;
+}
+
+/* Поддержка тёмной темы для улучшенных баров */
+@media (prefers-color-scheme: dark) {
+    .bar-track {
+        background-color: #222a33;
+        background-image: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 10%);
+    }
+
+    .bar-estimate {
+        background-color: #2a3f55;
+        border-right: 1px solid #355372;
+    }
+}

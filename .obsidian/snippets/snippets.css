@@ -317,6 +317,167 @@ body:has(.kanban-user-feed-modal) .popover.hover-popover {
     padding-left: 55px;
 }
 
+/* === Task report: панель фильтра по разработчику справа от таблицы === */
+/* Обёртка вокруг таблицы: position: relative нужен, чтобы бар внутри мог
+   спозиционироваться абсолютно справа сверху. Сама обёртка участвует в
+   обычном потоке (block) и не вызывает горизонтального скролла.
+   padding-right: 50px резервирует справа полосу под бар (бар ≈ 37px ширины
+   + right: 4px + ~9px зазор), чтобы таблица упиралась в эту полосу и
+   её содержимое не заезжало под бар на узких экранах. */
+.task-report-filter-wrap {
+    position: relative;
+    padding-right: 50px;
+    margin-block: 1em;
+}
+
+.task-report-filter-wrap > .table-spinner-container {
+    /* Минимальная высота зоны таблицы — с запасом на высоту бара аватарок,
+       чтобы при пустой таблице бар не вылезал за её низ. */
+    min-height: 360px;
+    /* Когда таблица упирается в свой intrinsic min-width (ширина по содержимому
+       колонок) и обёртка уже этого min-width — без overflow таблица вылезает
+       вправо и заезжает под абсолютно-спозиционированный бар. overflow-x: auto
+       запирает таблицу внутри спиннер-контейнера и при необходимости показывает
+       горизонтальный скролл-бар. max-width: 100% страхует от роста за пределы
+       обёртки. */
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.task-report-filter-bar {
+    position: absolute;
+    top: 14px;
+    right: 4px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 5px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.task-report-filter-bar button {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.task-report-filter-bar button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.task-report-filter-bar button:hover {
+    transform: scale(1.18);
+    border-color: var(--interactive-accent);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.task-report-filter-bar button.active {
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px var(--interactive-accent);
+    transform: scale(1.1);
+}
+
+.task-report-filter-bar button.active:hover {
+    transform: scale(1.18);
+}
+
+/* === Task report: Activity badges === */
+.task-activity-badge {
+    --task-activity-fg: var(--text-muted);
+    --task-activity-border: rgba(128, 148, 172, 0.42);
+    --task-activity-dot-bg: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+    padding: 2px 8px;
+    border: 1px solid var(--task-activity-border);
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--font-monospace), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.task-activity-badge__dot {
+    width: 0.52em;
+    min-width: 0.52em;
+    height: 0.52em;
+    border-radius: 999px;
+    background: var(--task-activity-dot-bg);
+}
+
+.task-activity-badge__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-activity-badge--feat {
+    --task-activity-dot-bg: #a3d6a0;
+}
+
+.task-activity-badge--fix {
+    --task-activity-dot-bg: #bf4c6e;
+}
+
+.task-activity-badge--docs {
+    --task-activity-dot-bg: #99caff;
+}
+
+.task-activity-badge--design {
+    --task-activity-dot-bg: #a855f7;
+}
+
+.task-activity-badge--devops {
+    --task-activity-dot-bg: #bf91c4;
+}
+
+.task-activity-badge--chore {
+    --task-activity-dot-bg: #aeb2b5;
+}
+
+.task-activity-badge--test {
+    --task-activity-dot-bg: #4fb8a8;
+}
+
+.task-activity-badge--refactor,
+.task-activity-badge--sd,
+.task-activity-badge--analysis,
+.task-activity-badge--agile,
+.task-activity-badge--review,
+.task-activity-badge--other {
+    --task-activity-dot-bg: var(--interactive-accent);
+}
+
+.task-activity-badge--missing {
+    --task-activity-dot-bg: var(--text-faint);
+    opacity: 0.72;
+}
+
 /* === Kanban: метаданные карточек в один ряд + цветовое разделение === */
 /* Плагин рендерит metadata-keys как HTML-таблицу:
    <table.meta-table><tbody><tr.meta-row>
