@@ -1,0 +1,205 @@
+/* Иконка таймера для блока с временем */
+.callout[data-callout="timer"] {
+    --callout-color: 255, 176, 41; /* Оранжевый */
+    --callout-icon: lucide-timer;
+}
+
+/* === Kanban: вертикальная панель фильтра по разработчику === */
+.kanban-filter-bar {
+    position: absolute;
+    top: 14px;
+    left: 8px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 5px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    pointer-events: auto;
+    transition: top 0.2s ease;
+}
+
+/* Когда нативная строка поиска kanban открыта — сдвигаем бар вниз,
+   чтобы он не перекрывал её. */
+.view-content:has(.kanban-plugin__search-wrapper) > .kanban-filter-bar {
+    top: 64px;
+}
+
+.kanban-filter-bar button {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kanban-filter-bar button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.kanban-filter-bar button:hover {
+    transform: scale(1.18);
+    border-color: var(--interactive-accent);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.kanban-filter-bar button.active {
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px var(--interactive-accent);
+    transform: scale(1.1);
+}
+
+.kanban-filter-bar button.active:hover {
+    transform: scale(1.18);
+}
+
+/* === Дробь «45/64 · Σ120» — общая для ленты и карточек ===
+   Текст дроби без цветовой семантики: числитель обычным цветом, знаменатель
+   и Σ приглушены. Единственный сигнал тревоги — красный фон при перерасходе
+   часов спринта над оценкой: на карточке его ставит kbsync-overrun (см. выше),
+   в ленте — data-level="over" на самой дроби. Только переменные темы. */
+.kbsync-spent {
+    font-variant-numeric: tabular-nums;
+    color: var(--text-normal);
+}
+
+.kbsync-est,
+.kbsync-total {
+    color: var(--text-muted);
+}
+
+/* Сдвинуть содержимое доски вправо, чтобы не перекрывалось .kanban-filter-bar */
+.kanban-plugin__board > div {
+    padding-left: 55px;
+}
+
+/* === Kanban: метаданные карточек в один ряд + цветовое разделение === */
+/* Плагин рендерит metadata-keys как HTML-таблицу:
+   <table.meta-table><tbody><tr.meta-row>
+       <td.meta-key data-key="..."> <td.meta-value-wrapper>
+   По умолчанию каждая пара key/value — отдельная строка таблицы.
+   Делаем tbody горизонтальным flex-контейнером, а каждый tr — inline-flex
+   «пилюлей», чтобы её tds стали реальными flex-items с управляемым gap. */
+.kanban-plugin__meta-table {
+    display: block;
+    width: auto;
+}
+
+.kanban-plugin__meta-table > tbody {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: baseline;
+}
+
+.kanban-plugin__meta-row {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 3px;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+
+/* Когда kanbanBoardSpentSync вставил пилюлю-дробь «45/64 · Σ120»,
+   отдельная строка estimate дублирует оценку — прячем её. Без spentsum
+   (карточки чужих спринтов, нет Dataview) оценка остаётся видимой. */
+.kanban-plugin__meta-table > tbody:has(td.kanban-plugin__meta-key[data-key="spentsum"])
+    > tr:has(td.kanban-plugin__meta-key[data-key="estimate"]) {
+    display: none;
+}
+
+/* Цифры в пилюле чуть крупнее и плотнее к значку. */
+.kanban-plugin__meta-row:has(td.kanban-plugin__meta-key[data-key="spentsum"])
+    td.kanban-plugin__meta-value-wrapper {
+    font-size: 1.05em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* Сбросить дефолтные width/padding/white-space у td. Селекторы одной
+   специфичности с плагином (.A td.B), но идут позже — выигрывают по cascade. */
+.kanban-plugin__meta-table td.kanban-plugin__meta-key,
+.kanban-plugin__meta-table td.kanban-plugin__meta-value-wrapper {
+    width: auto;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+/* Цветовое разделение: estimate — синий «план», spentsum — зелёный «факт».
+   Если spent > estimate, JS-скрипт kanbanBoardSpentSync навешивает класс
+   `kbsync-overrun` на строку spent — она перекрашивается в красный.
+   Цвет текста — var(--text-normal), чтобы пилюли были читаемы и в светлой,
+   и в тёмной теме (его же наследуют глифы-значки ниже). */
+.kanban-plugin__meta-row:has(.kanban-plugin__meta-key[data-key="estimate"]) {
+    /*background: rgb(158 161 163 / 0.15);*/
+    color: var(--text-normal);
+}
+
+.kanban-plugin__meta-row:has(.kanban-plugin__meta-key[data-key="spentsum"]) {
+    /*background: rgba(16, 185, 129, 0.15);*/
+    color: var(--text-normal);
+}
+
+.kanban-plugin__meta-row:has(.kanban-plugin__meta-key[data-key="spentsum"]).kbsync-overrun {
+    background: rgba(239, 68, 68, 0.18);
+    color: var(--text-normal);
+}
+
+/* В тёмной теме светло-красный фон overrun (alpha 0.18) сливается с
+   тёмным background-primary — повышаем непрозрачность для контраста. */
+.theme-dark .kanban-plugin__meta-row:has(.kanban-plugin__meta-key[data-key="spentsum"]).kbsync-overrun {
+    background: rgba(239, 68, 68, 0.32);
+}
+
+/* Имя разработчика (user, shouldHideLabel:true → один td с colspan=2) — жирным */
+.kanban-plugin__meta-row:has(td[colspan="2"]) .kanban-plugin__meta-value-wrapper {
+    font-weight: 500;
+}
+
+/* === Kanban: восстановить видимый thumb внутренних скроллов колонок ===
+   styles.css плагина задаёт `border:4px solid transparent; background-clip:content-box`
+   на `.kanban-plugin__scroll-container::-webkit-scrollbar-thumb`, но НЕ задаёт
+   background-color — и за счёт высокой специфичности селектора глобальный
+   thumb-цвет Obsidian не наследуется. Явно красим thumb здесь. */
+body:not(.native-scrollbars) .kanban-plugin__scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb-bg, rgba(0, 0, 0, 0.25));
+}
+
+body:not(.native-scrollbars) .kanban-plugin__scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-active-thumb-bg, rgba(0, 0, 0, 0.4));
+}
+
+/* === Kanban: значки estimate/spentsum на карточках ===
+   Лейбл estimate («🎯») плагин Kanban рендерит текстом td сам (metadata-keys
+   в настройках доски) — виден на карточках без пилюли-дроби. Пилюлю
+   «45/64 · Σ120» вставляет kanbanBoardSpentSync, её ключ-td скрыт. */
+.kanban-plugin__meta-table td.kanban-plugin__meta-key[data-key="estimate"],
+.kanban-plugin__meta-table td.kanban-plugin__meta-key[data-key="spentsum"] {
+    align-self: center;
+    font-size: 0.9em;
+    line-height: 1;
+}
+
+.kanban-plugin__meta-table td.kanban-plugin__meta-key[data-key="spentsum"] {
+    display: none; /* дробь говорит сама за себя, значок не нужен */
+}

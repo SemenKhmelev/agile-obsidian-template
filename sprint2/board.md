@@ -57,6 +57,6 @@ kanban-plugin: basic
 
 %% kanban:settings
 ```
-{"kanban-plugin":"basic","metadata-keys":[{"metadataKey":"estimate","label":"💲","shouldHideLabel":false,"containsMarkdown":true},{"metadataKey":"user","label":"U","shouldHideLabel":true,"containsMarkdown":false},{"metadataKey":"spentsum","label":"S","shouldHideLabel":false,"containsMarkdown":false}],"new-note-folder":"sprint2/tasks","new-note-template":"_templates/task-template.md","tag-colors":[{"tagKey":"#срочно","color":"rgba(239, 239, 239, 1)","backgroundColor":"rgba(232, 14, 14, 1)"},{"tagKey":"#внепланово","color":"rgba(0, 0, 0, 1)","backgroundColor":"rgba(227, 231, 32, 0.88)"},{"tagKey":"#ждет-закрытия-задачи","color":"rgba(0, 0, 0, 1)","backgroundColor":"rgba(8, 223, 36, 1)"}],"link-date-to-daily-note":true}
+{"kanban-plugin":"basic","metadata-keys":[{"metadataKey":"estimate","label":"🎯","shouldHideLabel":false,"containsMarkdown":true},{"metadataKey":"user","label":"U","shouldHideLabel":true,"containsMarkdown":false}],"new-note-folder":"sprint2/tasks","new-note-template":"_templates/task-template.md","tag-colors":[{"tagKey":"#срочно","color":"rgba(239, 239, 239, 1)","backgroundColor":"rgba(232, 14, 14, 1)"},{"tagKey":"#внепланово","color":"rgba(0, 0, 0, 1)","backgroundColor":"rgba(227, 231, 32, 0.88)"},{"tagKey":"#ждет-закрытия-задачи","color":"rgba(0, 0, 0, 1)","backgroundColor":"rgba(8, 223, 36, 1)"}],"link-date-to-daily-note":true}
 ```
 %%
