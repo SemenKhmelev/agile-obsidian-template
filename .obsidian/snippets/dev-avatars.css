@@ -1,0 +1,139 @@
+/* Аватарки разработчиков.
+   Сгенерировано _scripts/build_dev_avatars_css.py — не редактировать вручную.
+   PNG встроены как data URI, сниппет портабелен между машинами.
+
+   Блок 1: слева от имени файла в File Explorer (sprintNNN/comments/).
+   Блок 2: слева от inline-title внутри открытой карточки — активируется
+           через frontmatter `cssclasses: [dev-<slug>]`.
+   Блок 3: на карточках kanban-доски board.md — kanban сам рендерит embed
+           из frontmatter-поля `userAvatar`, CSS делает картинку круглой. */
+
+.nav-file-title[data-path*="/comments/"][data-path$="-Галена Селезнева.md"] .nav-file-title-content::before,
+.nav-file-title[data-path*="/comments/"][data-path$="-Ангел Весельчак.md"] .nav-file-title-content::before,
+.nav-file-title[data-path*="/comments/"][data-path$="-Кости Герасимов.md"] .nav-file-title-content::before,
+.nav-file-title[data-path*="/comments/"][data-path$="-Ксаеро Великанов.md"] .nav-file-title-content::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: middle;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  transform: translateY(-0.5px);
+}
+
+.nav-file-title[data-path*="/comments/"][data-path$="-Галена Селезнева.md"] .nav-file-title-content::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABAklEQVR42u3S0Q0AEAxAQTtJ7G0zI9hBgpZ78d+0pwxdrTgBAAACAEAAAAgAAAEAIAAA9BRAq335ZZwLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAUgPjLZPw0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA3wNtzAQAA4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD5ATIeEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AtCOAAAAIAAABACAAAAQAAACAECHmj7XR6DQ9ob5AAAAAElFTkSuQmCC");
+}
+.nav-file-title[data-path*="/comments/"][data-path$="-Ангел Весельчак.md"] .nav-file-title-content::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAA+ElEQVR42u3ZwQ0AEBBFQT0pVC06U4IWJMJumJe9S/4claHQigkAABAAAAIAQAAACAAAAQAgAAAEAIAAABAAAAIAQAAACAAAAQAgAAAEAICuAdTW3eIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwE8AO9/Wb78LAAAAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAMOKJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADICyAAAAQAgAAAEAAAAgBAAAAIQHATfph5R0tk3MsAAAAASUVORK5CYII=");
+}
+.nav-file-title[data-path*="/comments/"][data-path$="-Кости Герасимов.md"] .nav-file-title-content::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABBElEQVR42u3RQQ0AIQADQTwhDl3n7CQggoQ2ZDb8gc74FW2YAAAAAQAgAAAEAIAAABAAAKoDWN+MnJPv9b8ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBegNSI/fcCAADAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AqVIAdwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4E2AtwMAAIAAABAAAAIAQAAACAAAXWoDJQNwO1pegrYAAAAASUVORK5CYII=");
+}
+.nav-file-title[data-path*="/comments/"][data-path$="-Ксаеро Великанов.md"] .nav-file-title-content::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABD0lEQVR42u3cUQ3AIAxAQTwhDl04QwIeIIG2uZf9d+t9QtaWvtasAAAAAQAgAAAEAIAAABAAACoFMGY/fjLOBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBsADcfkxHgzTsDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAyAX8U/WE9wKwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgi6i9lwAAABYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFDz39G1AwAAgAAAEAAAAgBAAAAIAAA9agNZSHA7NiYj2wAAAABJRU5ErkJggg==");
+}
+
+.markdown-preview-view.dev-selezneva .inline-title::before,
+.markdown-source-view.dev-selezneva .inline-title::before,
+.markdown-preview-view.dev-veselchak .inline-title::before,
+.markdown-source-view.dev-veselchak .inline-title::before,
+.markdown-preview-view.dev-gerasimov .inline-title::before,
+.markdown-source-view.dev-gerasimov .inline-title::before,
+.markdown-preview-view.dev-velikanov .inline-title::before,
+.markdown-source-view.dev-velikanov .inline-title::before {
+  content: "";
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.4em;
+  vertical-align: -0.25em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.markdown-preview-view.dev-selezneva .inline-title::before,
+.markdown-source-view.dev-selezneva .inline-title::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABAklEQVR42u3S0Q0AEAxAQTtJ7G0zI9hBgpZ78d+0pwxdrTgBAAACAEAAAAgAAAEAIAAA9BRAq335ZZwLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAUgPjLZPw0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA3wNtzAQAA4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD5ATIeEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AtCOAAAAIAAABACAAAAQAAACAECHmj7XR6DQ9ob5AAAAAElFTkSuQmCC");
+}
+.markdown-preview-view.dev-veselchak .inline-title::before,
+.markdown-source-view.dev-veselchak .inline-title::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAA+ElEQVR42u3ZwQ0AEBBFQT0pVC06U4IWJMJumJe9S/4claHQigkAABAAAAIAQAAACAAAAQAgAAAEAIAAABAAAAIAQAAACAAAAQAgAAAEAICuAdTW3eIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwE8AO9/Wb78LAAAAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAMOKJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADICyAAAAQAgAAAEAAAAgBAAAAIQHATfph5R0tk3MsAAAAASUVORK5CYII=");
+}
+.markdown-preview-view.dev-gerasimov .inline-title::before,
+.markdown-source-view.dev-gerasimov .inline-title::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABBElEQVR42u3RQQ0AIQADQTwhDl3n7CQggoQ2ZDb8gc74FW2YAAAAAQAgAAAEAIAAABAAAKoDWN+MnJPv9b8ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBegNSI/fcCAADAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AqVIAdwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4E2AtwMAAIAAABAAAAIAQAAACAAAXWoDJQNwO1pegrYAAAAASUVORK5CYII=");
+}
+.markdown-preview-view.dev-velikanov .inline-title::before,
+.markdown-source-view.dev-velikanov .inline-title::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABD0lEQVR42u3cUQ3AIAxAQTwhDl04QwIeIIG2uZf9d+t9QtaWvtasAAAAAQAgAAAEAIAAABAAACoFMGY/fjLOBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBsADcfkxHgzTsDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAyAX8U/WE9wKwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgi6i9lwAAABYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFDz39G1AwAAgAAAEAAAAgBAAAAIAAA9agNZSHA7NiYj2wAAAABJRU5ErkJggg==");
+}
+
+/* Блок 3: kanban-доска board.md.
+   1) Перерисовываем .kanban-plugin__meta-table на flex-layout, чтобы
+      можно было задавать порядок строк (kanban-плагин управляет
+      metadata-keys в board.md и откатывает ручные правки порядка).
+   2) Строка user всегда первая, остальное (estimate/spentsum/…) — после.
+   3) Цепляемся к ячейке user через data-value="Фамилия", добавляем
+      ::before с base64-аватаркой и обрезаем длинные фамилии ellipsis. */
+
+.kanban-plugin__meta-table { display: block; width: 100%; }
+.kanban-plugin__meta-table > tbody { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-end; gap: 8px; width: 100%; min-width: 0; }
+.kanban-plugin__meta-row { display: flex; align-items: center; flex: 0 0 auto; min-width: 0; order: 5; gap: 2px; }
+.kanban-plugin__meta-row > td { display: block; min-width: 0; padding: 0 !important; }
+
+.kanban-plugin__meta-row:has(> td[data-value="Галена Селезнева"]),
+.kanban-plugin__meta-row:has(> td[data-value="Ангел Весельчак"]),
+.kanban-plugin__meta-row:has(> td[data-value="Кости Герасимов"]),
+.kanban-plugin__meta-row:has(> td[data-value="Ксаеро Великанов"]) {
+  order: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.kanban-plugin__meta-value-wrapper[data-value="Галена Селезнева"] .kanban-plugin__meta-value::before,
+.kanban-plugin__meta-value-wrapper[data-value="Ангел Весельчак"] .kanban-plugin__meta-value::before,
+.kanban-plugin__meta-value-wrapper[data-value="Кости Герасимов"] .kanban-plugin__meta-value::before,
+.kanban-plugin__meta-value-wrapper[data-value="Ксаеро Великанов"] .kanban-plugin__meta-value::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: -3px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.kanban-plugin__meta-value-wrapper[data-value="Галена Селезнева"] .kanban-plugin__meta-value,
+.kanban-plugin__meta-value-wrapper[data-value="Ангел Весельчак"] .kanban-plugin__meta-value,
+.kanban-plugin__meta-value-wrapper[data-value="Кости Герасимов"] .kanban-plugin__meta-value,
+.kanban-plugin__meta-value-wrapper[data-value="Ксаеро Великанов"] .kanban-plugin__meta-value {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.kanban-plugin__meta-value-wrapper[data-value="Галена Селезнева"] .kanban-plugin__meta-value::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABAklEQVR42u3S0Q0AEAxAQTtJ7G0zI9hBgpZ78d+0pwxdrTgBAAACAEAAAAgAAAEAIAAA9BRAq335ZZwLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAUgPjLZPw0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA3wNtzAQAA4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD5ATIeEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB+AtCOAAAAIAAABACAAAAQAAACAECHmj7XR6DQ9ob5AAAAAElFTkSuQmCC");
+}
+.kanban-plugin__meta-value-wrapper[data-value="Ангел Весельчак"] .kanban-plugin__meta-value::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAA+ElEQVR42u3ZwQ0AEBBFQT0pVC06U4IWJMJumJe9S/4claHQigkAABAAAAIAQAAACAAAAQAgAAAEAIAAABAAAAIAQAAACAAAAQAgAAAEAICuAdTW3eIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwE8AO9/Wb78LAAAAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAMOKJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADICyAAAAQAgAAAEAAAAgBAAAAIQHATfph5R0tk3MsAAAAASUVORK5CYII=");
+}
+.kanban-plugin__meta-value-wrapper[data-value="Кости Герасимов"] .kanban-plugin__meta-value::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABBElEQVR42u3RQQ0AIQADQTwhDl3n7CQggoQ2ZDb8gc74FW2YAAAAAQAgAAAEAIAAABAAAKoDWN+MnJPv9b8ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBegNSI/fcCAADAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0AqVIAdwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4E2AtwMAAIAAABAAAAIAQAAACAAAXWoDJQNwO1pegrYAAAAASUVORK5CYII=");
+}
+.kanban-plugin__meta-value-wrapper[data-value="Ксаеро Великанов"] .kanban-plugin__meta-value::before {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAABD0lEQVR42u3cUQ3AIAxAQTwhDl04QwIeIIG2uZf9d+t9QtaWvtasAAAAAQAgAAAEAIAAABAAACoFMGY/fjLOBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBsADcfkxHgzTsDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAyAX8U/WE9wKwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgi6i9lwAAABYBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFDz39G1AwAAgAAAEAAAAgBAAAAIAAA9agNZSHA7NiYj2wAAAABJRU5ErkJggg==");
+}
