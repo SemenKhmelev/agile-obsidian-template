@@ -8,22 +8,14 @@ tags:
 previous: "[[sprint1/tasks/Расширить функционал constraints.min max default Width Height|Расширить функционал constraints.min max default Width Height]]"
 ---
 
-```dataview 
-Table WITHOUT ID
-	this.file.frontmatter.estimate as "Estimate",
-	Total as "Spent"
-FROM [[#]]
-WHERE contains(file.path, "comments")
-FLATTEN file.lists as Lists
-WHERE Lists.cardref = this.file.link
-GROUP BY ""
-FLATTEN sum(rows.Lists.spent) as Total
+```dataviewjs
+await dv.view("views/task-spent-summary", { dv });
 ```
 
 ```dataview 
 TABLE WITHOUT ID
 	user as "User",
-	Total as "Spent"
+	Total as "SpentSprint"
 FROM [[#]]
 WHERE contains(file.folder, "comments")
 FLATTEN file.lists as Lists

@@ -17,6 +17,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","new-note-template":"_templates/time-worked-debt-pattern.md","new-note-folder":"sprint2/debts","metadata-keys":[{"metadataKey":"user","label":"","shouldHideLabel":false,"containsMarkdown":false},{"metadataKey":"debt","label":"","shouldHideLabel":false,"containsMarkdown":false}]}
+{"kanban-plugin":"board","new-note-template":"_templates/time-worked-debt-template.md","new-note-folder":"sprint2/debts","metadata-keys":[{"metadataKey":"user","label":"","shouldHideLabel":false,"containsMarkdown":false},{"metadataKey":"debt","label":"","shouldHideLabel":false,"containsMarkdown":false}]}
 ```
 %%
