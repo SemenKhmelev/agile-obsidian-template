@@ -19,6 +19,7 @@
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
     "_templates/time-spent-comment-template.md",
+    "_templates/time-spent-comment-button-template.md",
     "_templates/шаблон с мультикоретками.md"
   ],
   "startup_templates": [],

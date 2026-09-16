@@ -1,0 +1,52 @@
+button.time-comment-add-button {
+  --time-comment-button-bg: rgba(0, 0, 0, 0.03);
+  --time-comment-button-bg-hover: rgba(0, 0, 0, 0.07);
+  --time-comment-button-text: var(--text-normal);
+  --time-comment-button-border: transparent;
+
+  display: inline-flex;
+  padding: 0;
+  width: 44px;
+  height: 24px;
+  min-width: 20px;
+  min-height: 24px;
+  max-width: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  vertical-align: middle;
+  box-shadow: none;
+  border: 1px solid var(--time-comment-button-border);
+  border-radius: 6px;
+  background-color: var(--time-comment-button-bg);
+  color: var(--time-comment-button-text);
+  transition: background-color ease-out 0.2s, border-color ease-out 0.2s;
+  cursor: pointer;
+}
+
+.time-comment-add-button__label {
+  display: block;
+  height: 16px;
+  line-height: 14px; 
+}
+
+button.time-comment-add-button:hover {
+  background-color: var(--time-comment-button-bg-hover);
+}
+
+button.time-comment-add-button:focus,
+button.time-comment-add-button:focus-visible,
+button.time-comment-add-button:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.theme-dark button.time-comment-add-button {
+  --time-comment-button-bg: rgba(255, 255, 255, 0.08);
+  --time-comment-button-bg-hover: rgba(255, 255, 255, 0.14);
+  --time-comment-button-text: var(--text-normal);
+  --time-comment-button-border: rgba(255, 255, 255, 0.04);
+}

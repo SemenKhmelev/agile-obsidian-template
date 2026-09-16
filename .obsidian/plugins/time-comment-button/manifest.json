@@ -1,0 +1,9 @@
+{
+  "id": "time-comment-button",
+  "name": "Time Comment Button",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Renders the daily time-comment inline marker as a compact insert button.",
+  "author": "Local",
+  "isDesktopOnly": false
+}

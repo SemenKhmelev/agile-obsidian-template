@@ -11,6 +11,7 @@ const { Plugin } = obsidian;
 const scriptRequire = (id) => (id === "obsidian" ? obsidian : window.require(id));
 const STARTUP_SCRIPTS = [
     "_scripts/ensureTemplaterFileCreationTrigger.js",
+    "_scripts/resetStaleActiveEditor.js",
 ];
 
 module.exports = class VaultStartupScriptsPlugin extends Plugin {

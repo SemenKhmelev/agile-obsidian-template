@@ -5,6 +5,8 @@
     "tags": "tags",
     "автор": "multitext",
     "estimate": "number",
-    "sprint": "multitext"
+    "sprint": "multitext",
+    "user": "text",
+    "action": "text"
   }
 }
