@@ -72,6 +72,174 @@
     transform: scale(1.18);
 }
 
+/* === Kanban: сквозная лента записей человека (правый клик по аватарке) ===
+   Рисуется _scripts/kanbanUserFeed.js в стандартном Modal Obsidian. */
+.kanban-user-feed-modal {
+    width: min(760px, 92vw);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-user-feed-modal .modal-content {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.kanban-user-feed__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    cursor: move;          /* окно перетаскивается за заголовок */
+    user-select: none;
+}
+
+/* Всплывающий предпросмотр (core Page preview) лежит на слое ниже модалки —
+   пока открыта лента, поднимаем его над ней. */
+body:has(.kanban-user-feed-modal) .popover.hover-popover {
+    z-index: calc(var(--layer-modal, 50) + 1);
+}
+
+.kanban-user-feed__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.kanban-user-feed__stats {
+    margin-left: auto;
+    font-size: var(--font-ui-small);
+    font-weight: normal;
+    color: var(--text-muted);
+}
+
+/* Шапка дня и записи стоят на одной сетке: часы | карточка | дробь | стрелка.
+   Итог дня — над колонкой часов, которые он суммирует; подпись колонки дробей —
+   над дробями. em в ширинах колонок считаются от шрифта записи, поэтому у шапки
+   дня свой font-size не задан: мелкий кегль стоит только на её подписях. */
+.kanban-user-feed__day {
+    --kuf-gutter: 3.8em;   /* часы и тип действия; самые длинные типы — analysis, refactor */
+    --kuf-source: 1.6em;   /* стрелка ↗ */
+    margin-bottom: 18px;
+}
+
+/* Шапка дня липнет к верху при прокрутке, чтобы видно было, какой день читаешь. */
+.kanban-user-feed__day-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: var(--kuf-gutter) minmax(0, 1fr) auto var(--kuf-source);
+    column-gap: 8px;
+    align-items: baseline;
+    /* Слева рамка записи (2px) плюс её отступ (12px): итог стоит ровно над часами. */
+    padding: 6px 0 6px 14px;
+    background: var(--background-primary);
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.kanban-user-feed__day-total {
+    grid-column: 1;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--text-normal);
+    white-space: nowrap;
+}
+
+.kanban-user-feed__day-label {
+    grid-column: 2;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+    font-size: var(--font-ui-small);
+}
+
+.kanban-user-feed__day-date {
+    font-weight: 600;
+    color: var(--text-normal);
+}
+
+.kanban-user-feed__day-sprint {
+    color: var(--text-muted);
+}
+
+.kanban-user-feed__day-caption {
+    grid-column: 3;
+    font-size: var(--font-ui-smaller);
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.kanban-user-feed__entry {
+    display: grid;
+    grid-template-columns: var(--kuf-gutter) minmax(0, 1fr) auto var(--kuf-source);
+    column-gap: 8px;
+    align-items: baseline;
+    padding: 8px 0 8px 12px;
+    border-left: 2px solid var(--background-modifier-border);
+    margin: 6px 0;
+}
+
+.kanban-user-feed__entry:hover {
+    border-left-color: var(--interactive-accent);
+    background: var(--background-modifier-hover);
+}
+
+/* Строка заголовка записи — первая строка сетки записи. Места в сетке заданы явно:
+   у записи без дроби стрелка всё равно остаётся в своей колонке. */
+.kanban-user-feed__entry-head {
+    display: contents;
+}
+
+/* Часы записи — слева, колонка выровнена по всем записям и по итогу дня. */
+.kanban-user-feed__spent {
+    grid-area: 1 / 1;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--text-normal);
+    white-space: nowrap;
+}
+
+/* Название карточки — единственная гибкая колонка: ужимается и переносит свой текст. */
+.kanban-user-feed__card {
+    grid-area: 1 / 2;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-weight: 600;
+    color: var(--text-accent);
+    text-decoration: none;
+}
+
+.kanban-user-feed__card:hover {
+    text-decoration: underline;
+}
+
+/* Тип действия — под часами и без чипа: заголовки карточек стоят по одной вертикали.
+   Неожиданно длинный тип обрезается многоточием, полное имя — в title. */
+.kanban-user-feed__action {
+    grid-area: 2 / 1;
+    margin-top: 4px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75em;
+    font-family: var(--font-monospace);
+    color: var(--text-muted);
+}
+
+/* Дробь по задаче: «потрачено за спринт / оценка · Σ за все спринты». */
+.kanban-user-feed__totals {
+    grid-area: 1 / 3;
+    font-size: var(--font-ui-small);
+    white-space: nowrap;
+}
+
 /* === Дробь «45/64 · Σ120» — общая для ленты и карточек ===
    Текст дроби без цветовой семантики: числитель обычным цветом, знаменатель
    и Σ приглушены. Единственный сигнал тревоги — красный фон при перерасходе
@@ -85,6 +253,63 @@
 .kbsync-est,
 .kbsync-total {
     color: var(--text-muted);
+}
+
+.kanban-user-feed__totals[data-level="over"] {
+    background: rgba(239, 68, 68, 0.18);
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+.theme-dark .kanban-user-feed__totals[data-level="over"] {
+    background: rgba(239, 68, 68, 0.32);
+}
+
+/* Переход к файлу записи за день. */
+.kanban-user-feed__source {
+    grid-area: 1 / 4;
+    justify-self: center;
+    color: var(--text-faint);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.kanban-user-feed__source:hover {
+    color: var(--text-accent);
+}
+
+/* Текст записи — под заголовком карточки, до правого края. */
+.kanban-user-feed__text {
+    grid-area: 2 / 2 / auto / -1;
+    margin-top: 4px;
+    font-size: calc(var(--font-ui-small) + 1px);
+    color: var(--text-normal);
+}
+
+.kanban-user-feed__text p {
+    margin: 0 0 4px 0;
+    white-space: pre-line;
+}
+
+.kanban-user-feed__text ul {
+    margin: 2px 0 0 0;
+}
+
+.kanban-user-feed__empty {
+    padding: 24px 0;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.kanban-user-feed__more {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* Авторский display: block перебил бы стандартное скрытие через атрибут hidden. */
+.kanban-user-feed__more[hidden] {
+    display: none;
 }
 
 /* Сдвинуть содержимое доски вправо, чтобы не перекрывалось .kanban-filter-bar */

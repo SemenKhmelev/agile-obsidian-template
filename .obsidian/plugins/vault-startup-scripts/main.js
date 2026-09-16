@@ -14,6 +14,7 @@ const STARTUP_SCRIPTS = [
     "_scripts/resetStaleActiveEditor.js",
     "_scripts/ensureSnippetsEnabled.js",
     "_scripts/kanbanFilterBar.js",
+    "_scripts/kanbanUserFeed.js",
     "_scripts/kanbanBoardSpentSync.js",
 ];
 
