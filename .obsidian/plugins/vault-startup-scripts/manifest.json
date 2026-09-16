@@ -1,0 +1,9 @@
+{
+  "id": "vault-startup-scripts",
+  "name": "Vault Startup Scripts",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Loads vault startup scripts from _scripts (file-explorer date separators, kanban filter bar, spent sync, CSS snippet enablement).",
+  "author": "Local",
+  "isDesktopOnly": false
+}

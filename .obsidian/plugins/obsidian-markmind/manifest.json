@@ -1,10 +1,10 @@
 {
 	"id": "obsidian-markmind",
-	"name": "obsidian markmind",
-	"version": "1.9.0",
+	"name": "Markmind",
+	"version": "3.7.2",
 	"minAppVersion": "0.9.12",
-	"description": "This is a mindmap，outline and pdf annotate tool for obsidian.",
+	"description": "This is a mindmap,outline software.",
 	"author": "Mark",
-	"authorUrl": "https://github.com/MarkMindCkm/obsidian-markmind",
+	"authorUrl": "https://github.com/MarkMindCkm",
 	"isDesktopOnly": false
 }

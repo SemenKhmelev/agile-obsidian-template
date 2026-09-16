@@ -2,6 +2,12 @@
   "dataview",
   "obsidian-kanban",
   "templater-obsidian",
+  "obsidian-charts",
+  "buttons",
+  "cmdr",
   "obsidian-git",
-  "obsidian-charts"
+  "cm-editor-syntax-highlight-obsidian",
+  "obsidian-markmind",
+  "obsidian-plantuml",
+  "vault-startup-scripts"
 ]

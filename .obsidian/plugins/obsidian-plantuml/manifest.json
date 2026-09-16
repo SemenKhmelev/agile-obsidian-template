@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-plantuml",
+	"name": "PlantUML",
+	"version": "1.9.0",
+	"minAppVersion": "1.13.1",
+	"description": "Render PlantUML diagrams.",
+	"author": "Johannes Theiner",
+	"authorUrl": "https://github.com/joethei/",
+	"isDesktopOnly": false
+}
