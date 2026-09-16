@@ -1,0 +1,815 @@
+/* Roadmap timeline.
+   Все селекторы живут под .tl-root, чтобы стили не протекали в другие заметки.
+   Цвета берутся из тем Obsidian (--text-normal, --background-*, --color-*),
+   поэтому светлая и тёмная темы работают без отдельной вёрстки.
+   Единственное исключение — палитра акцентов тем (--tl-accent приходит
+   инлайном из view.js): это средне-тёмные оттенки, на которых белый текст
+   полосы читается в обеих темах; для тёмной темы ниже есть отдельный блок
+   .theme-dark с подсветкой границ и лёгким осветлением заливки.
+
+   Уровни дерева: .is-root — тема или группа «Без темы», .is-epic — эпик,
+   .is-sub — подэпик и глубже. Отступ строки задаёт --tl-level из view.js. */
+
+.tl-root {
+  --tl-left: 360px;
+  --tl-month: 116px;
+  --tl-months: 12;
+  --tl-row-h: 37px;
+  color: var(--text-normal);
+  font-size: var(--font-ui-small, 13px);
+  line-height: 1.45;
+}
+
+.tl-root * { box-sizing: border-box; }
+
+/* ---------------------------------------------------------------- шапка -- */
+.tl-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-bottom: 10px;
+}
+
+.tl-title {
+  font-size: 1.35em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tl-summary {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.tl-legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  margin-left: auto;
+  padding: 4px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.tl-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+
+.tl-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+
+/* ------------------------------------------------------------- тулбар ---- */
+.tl-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tl-input,
+.tl-select {
+  height: 30px;
+  padding: 4px 10px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 13px;
+}
+
+.tl-input { flex: 1 1 200px; min-width: 160px; max-width: 320px; }
+
+.tl-input:focus,
+.tl-select:focus {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -1px;
+}
+
+.tl-btn {
+  height: 30px;
+  padding: 4px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tl-btn:hover:not(:disabled) { background: var(--interactive-hover); }
+
+.tl-btn.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: transparent;
+}
+
+.tl-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.tl-btn-accent {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: transparent;
+}
+
+.tl-btn-accent:hover:not(:disabled) { filter: brightness(1.08); background: var(--interactive-accent); }
+
+.tl-btn-danger {
+  background: var(--color-red, #d64e4a);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.tl-btn-danger:hover:not(:disabled) { filter: brightness(1.08); background: var(--color-red, #d64e4a); }
+
+.tl-btn-group {
+  display: inline-flex;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tl-btn-group .tl-btn {
+  border: 0;
+  border-right: 1px solid var(--background-modifier-border);
+  border-radius: 0;
+}
+
+.tl-btn-group .tl-btn:last-child { border-right: 0; }
+
+/* --------------------------------------------------- строка состояния ---- */
+.tl-status {
+  min-height: 18px;
+  margin: -4px 0 10px;
+  color: var(--text-normal);
+  font-size: 12px;
+}
+
+.tl-status.is-error { color: var(--color-red, #d64e4a); }
+
+/* ------------------------------------------------------------- полотно --- */
+.tl-scroll {
+  position: relative;
+  max-height: 72vh;
+  overflow: auto;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  background: var(--background-primary);
+}
+
+.tl-canvas {
+  position: relative;
+  width: max-content;
+  min-width: 100%;
+}
+
+/* ---- ось времени ---- */
+.tl-axis-head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.tl-corner {
+  position: sticky;
+  left: 0;
+  z-index: 6;
+  flex: 0 0 var(--tl-left);
+  width: var(--tl-left);
+  padding: 6px 10px;
+  background: var(--background-secondary);
+  border-right: 1px solid var(--background-modifier-border);
+}
+
+.tl-corner-top { font-weight: 700; }
+.tl-corner-bottom { color: var(--text-muted); font-size: 11px; }
+
+.tl-axis { width: calc(var(--tl-months) * var(--tl-month)); }
+
+.tl-axis-row { display: flex; }
+
+.tl-axis-cell {
+  flex: 0 0 auto;
+  padding: 3px 4px;
+  border-right: 1px solid var(--background-modifier-border);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-axis-top .tl-axis-cell {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tl-axis-bottom .tl-axis-cell {
+  font-size: 11px;
+  color: var(--text-normal);
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.tl-axis-cell.is-year-start { border-left: 2px solid var(--background-modifier-border-hover, var(--background-modifier-border)); }
+
+/* ---- строки ---- */
+.tl-body { position: relative; }
+
+.tl-row {
+  display: flex;
+  align-items: stretch;
+  min-height: var(--tl-row-h);
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.tl-row:last-child { border-bottom: 0; }
+
+.tl-row.is-root { --tl-row-h: 42px; }
+
+.tl-cell {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  flex: 0 0 var(--tl-left);
+  width: var(--tl-left);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px calc(10px + var(--tl-level, 0) * 18px);
+  background-color: var(--tl-cell-bg);
+  border-right: 1px solid var(--background-modifier-border);
+  overflow: hidden;
+}
+
+.tl-row.is-root .tl-cell {
+  border-left: 3px solid var(--tl-accent, var(--interactive-accent));
+  font-weight: 700;
+}
+
+.tl-row.is-epic .tl-cell { font-weight: 600; }
+
+.tl-row.is-group .tl-cell { color: var(--text-muted); font-style: italic; }
+
+/* Фон строки задан переменными — обычный и при наведении, отдельно для левой
+   колонки и для сетки месяцев. Тема (.is-banded, цвет --tl-band из view.js)
+   подсвечивает свою строку целиком, а строки своих эпиков — только в сетке. */
+.tl-row {
+  --tl-cell-bg: var(--background-primary);
+  --tl-cell-bg-hover: color-mix(in srgb, var(--text-normal) 6%, var(--background-primary));
+  --tl-lane-bg: transparent;
+  --tl-lane-bg-hover: color-mix(in srgb, var(--text-normal) 6%, transparent);
+}
+
+.tl-row.is-root {
+  --tl-cell-bg: var(--background-secondary);
+  --tl-cell-bg-hover: color-mix(in srgb, var(--text-normal) 6%, var(--background-secondary));
+}
+
+/* Эпик с подэпиками вместо полосы подсвечивает сетку своим цветом — цветом
+   полос его подэпиков. Эпики без вложенных и подэпики остаются на нейтральном фоне. */
+.tl-row.is-epic.is-parent {
+  --tl-lane-bg: color-mix(in srgb, var(--tl-accent) 14%, var(--background-primary));
+  --tl-lane-bg-hover: color-mix(in srgb, var(--tl-accent) 22%, var(--background-primary));
+}
+
+/* Подэпики не тонируются: сетка месяцев на нейтральном фоне темы Obsidian. */
+.tl-row.is-sub { --tl-lane-bg: var(--background-primary); }
+
+.tl-row.is-banded.is-root {
+  --tl-cell-bg: color-mix(in srgb, var(--tl-band) 20%, var(--background-primary));
+  --tl-cell-bg-hover: color-mix(in srgb, var(--tl-band) 28%, var(--background-primary));
+  --tl-lane-bg: var(--tl-cell-bg);
+  --tl-lane-bg-hover: var(--tl-cell-bg-hover);
+}
+
+.tl-row:hover .tl-cell { background-color: var(--tl-cell-bg-hover); }
+.tl-row:hover .tl-lane { background-color: var(--tl-lane-bg-hover); }
+
+/* Строку можно взять за левую колонку и переставить. */
+.tl-cell { cursor: grab; }
+.tl-cell a,
+.tl-cell button,
+.tl-cell input { cursor: pointer; }
+.tl-cell input { cursor: text; }
+
+.tl-root.is-row-dragging { user-select: none; }
+.tl-root.is-row-dragging .tl-cell { cursor: grabbing; }
+.tl-row.is-moving { opacity: 0.4; }
+
+.tl-drop-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--interactive-accent);
+  pointer-events: none;
+}
+
+.tl-drop-line::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--interactive-accent);
+}
+
+/* Пока идёт запись в заметки, дерево не принимает новые жесты. */
+.tl-root.is-busy .tl-body { opacity: 0.6; pointer-events: none; }
+
+.tl-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 2px;
+  margin-left: 2px;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.tl-row:hover .tl-actions,
+.tl-cell:focus-within .tl-actions { opacity: 1; }
+
+.tl-icon-btn {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.tl-icon-btn:hover {
+  background: var(--background-modifier-hover);
+  border-color: var(--background-modifier-border);
+  color: var(--text-normal);
+}
+
+.tl-icon-btn.is-danger:hover { color: var(--color-red, #d64e4a); }
+
+.tl-row.is-new { --tl-cell-bg: var(--tl-cell-bg-hover); }
+.tl-input-inline { flex: 1 1 auto; max-width: none; min-width: 0; height: 24px; }
+
+.tl-toggle {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.tl-toggle:hover:not(:disabled) { background: var(--background-modifier-hover); color: var(--text-normal); }
+.tl-toggle:disabled { opacity: 0.25; cursor: default; }
+
+.tl-indent { flex: 0 0 18px; }
+
+.tl-key {
+  flex: 0 0 auto;
+  padding: 1px 6px;
+  border-radius: 5px;
+  /* Обводка и фон ключа — в цвете полосы своей строки, текст — как у заголовка. */
+  --tl-key-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 40%, var(--background-primary));
+  border: 1px solid var(--tl-key-color);
+  color: var(--text-normal);
+  background: var(--tl-key-color);
+  font-family: var(--font-monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Ключ подэпика светлее ключа эпика — как и его полоса. */
+.tl-row.is-sub .tl-key {
+  --tl-key-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 22%, var(--background-primary));
+}
+
+.tl-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--text-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.tl-link:hover { color: var(--text-accent); text-decoration: underline; }
+
+.tl-link.is-static,
+.tl-link.is-static:hover { color: inherit; text-decoration: none; cursor: default; }
+
+.tl-count {
+  flex: 0 0 auto;
+  min-width: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tl-cell .tl-dot { flex: 0 0 auto; }
+
+.tl-count.is-hidden { visibility: hidden; }
+
+/* ---- дорожка и полосы ---- */
+.tl-lane {
+  position: relative;
+  background-color: var(--tl-lane-bg);
+  flex: 0 0 auto;
+  width: calc(var(--tl-months) * var(--tl-month));
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0 calc(var(--tl-month) - 1px),
+      var(--background-modifier-border) calc(var(--tl-month) - 1px) var(--tl-month)
+    );
+}
+
+/* .tl-bar — контейнер: его ширина равна срокам эпика, а хвост со счётчиками
+   вырастает правее. Фон и обрезка живут на .tl-bar-body, иначе хвост срежется. */
+.tl-bar {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  display: flex;
+  align-items: stretch;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: grab;
+  touch-action: none;      /* жест перетаскивания не отдаём прокрутке */
+  user-select: none;
+}
+
+/* Ширина приходит инлайном из view.js и равна срокам эпика: полоса её держит,
+   а хвост со счётчиками встаёт правее и общую ширину не отнимает. */
+.tl-bar-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  padding: 0 8px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Со счётчиками стык не скругляем — полоса и хвост читаются одной фигурой. */
+.tl-bar:has(.tl-tail) .tl-bar-body { border-radius: 6px 0 0 6px; }
+
+.tl-bar.is-dragging {
+  cursor: grabbing;
+  z-index: 1;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+/* Полотно во время жеста не выделяет текст и не подсвечивает строки. */
+.tl-root.is-dragging { user-select: none; }
+.tl-root.is-dragging .tl-row:hover .tl-cell { background-color: var(--tl-cell-bg); }
+.tl-root.is-dragging .tl-row:hover .tl-lane { background-color: var(--tl-lane-bg); }
+
+/* Зоны захвата у краёв: их ширина совпадает с HANDLE_HIT в view.js. */
+.tl-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  opacity: 0;
+  background: currentColor;
+  transition: opacity 0.12s ease;
+}
+
+.tl-handle.is-left { left: 0; border-radius: 6px 0 0 6px; }
+.tl-handle.is-right { right: 0; border-radius: 0 6px 6px 0; }
+
+.tl-bar:hover .tl-handle,
+.tl-bar.is-dragging .tl-handle { opacity: 0.45; }
+
+.tl-bar.is-epic .tl-bar-body {
+  background: var(--tl-accent, var(--interactive-accent));
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Высота подэпика — у контейнера: хвост должен встать вровень с полосой. */
+.tl-bar.is-sub {
+  top: 8px;
+  bottom: 8px;
+  font-weight: 500;
+}
+
+.tl-bar.is-sub .tl-bar-body {
+  background: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 24%, var(--background-primary));
+  border: 1px solid color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 55%, transparent);
+  border-right: 0;
+  color: var(--text-normal);
+}
+
+/* Подсветка при наведении — только на полосе: серый хвост от неё не светлеет. */
+.tl-bar:hover .tl-bar-body { filter: brightness(1.06); }
+
+.tl-bar-label {
+  position: relative;
+  flex: 0 1 auto;
+  min-width: 0;          /* иначе счётчики сожмутся, а не заголовок */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* На совсем узкой полосе заголовок исчезает целиком, цифры остаются. */
+/* На узкой полосе только поджимаем отступы: заголовок остаётся и обрезается
+   многоточием — скрывать его нельзя, иначе от эпика видно лишь серый хвост. */
+.tl-bar.is-narrow .tl-bar-body { padding: 0 4px; }
+
+/* Заливка готовности: доля закрытых часов, лежит под текстом полосы. */
+.tl-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.28);
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+}
+
+.tl-bar.is-sub .tl-progress {
+  background: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 30%, transparent);
+  border-right-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 60%, transparent);
+}
+
+/* Хвост со счётчиками: вырастает из правого края полосы и продолжает её.
+   Скругление стыка снято с обеих сторон, чтобы шов не читался. */
+.tl-tail {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  padding: 0 9px;
+  border: 1px solid var(--background-modifier-border);
+  border-left: 0;
+  border-radius: 0 6px 6px 0;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tl-tail-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Процент без значка: символ «%» рядом с числом и так его называет. */
+.tl-tail-item.is-percent { font-weight: 600; }
+.tl-tail-item.is-full { color: var(--color-green, #3b6d11); }
+
+.tl-tail-icon {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tl-bar.st-done { opacity: 0.75; }
+.tl-bar.st-blocked .tl-bar-body { box-shadow: inset 0 0 0 2px var(--color-red, #d64e4a); }
+.tl-bar.st-idea .tl-bar-body { background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0 6px, transparent 6px 12px); }
+
+.tl-nobar {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  padding: 1px 8px;
+  border: 1px dashed var(--background-modifier-border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tl-today {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 2px;
+  background: var(--color-red, #d64e4a);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.tl-empty {
+  padding: 28px 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------- статусы --- */
+.tl-root .st-idea {
+  color: var(--color-purple, #9a6fd0);
+  background: rgba(var(--color-purple-rgb, 154, 111, 208), 0.14);
+  border-color: rgba(var(--color-purple-rgb, 154, 111, 208), 0.35);
+}
+
+.tl-root .st-todo {
+  color: var(--text-muted);
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.tl-root .st-progress {
+  color: var(--color-yellow, #e0a700);
+  background: rgba(var(--color-yellow-rgb, 224, 167, 0), 0.14);
+  border-color: rgba(var(--color-yellow-rgb, 224, 167, 0), 0.35);
+}
+
+.tl-root .st-done {
+  color: var(--color-green, #22a06b);
+  background: rgba(var(--color-green-rgb, 34, 160, 107), 0.14);
+  border-color: rgba(var(--color-green-rgb, 34, 160, 107), 0.35);
+}
+
+.tl-root .st-blocked {
+  color: var(--color-red, #d64e4a);
+  background: rgba(var(--color-red-rgb, 214, 78, 74), 0.14);
+  border-color: rgba(var(--color-red-rgb, 214, 78, 74), 0.35);
+}
+
+/* Дот в легенде красится заливкой, а не текстом. */
+.tl-dot.st-idea { background: var(--color-purple, #9a6fd0); }
+.tl-dot.st-todo { background: var(--text-faint); }
+.tl-dot.st-progress { background: var(--color-yellow, #e0a700); }
+.tl-dot.st-done { background: var(--color-green, #22a06b); }
+.tl-dot.st-blocked { background: var(--color-red, #d64e4a); }
+
+/* Полосам статус цвет не меняет — он отдан акценту эпика, поэтому заливку
+   статуса на полосах сбрасываем. */
+.tl-root .tl-bar.st-idea,
+.tl-root .tl-bar.st-todo,
+.tl-root .tl-bar.st-progress,
+.tl-root .tl-bar.st-done,
+.tl-root .tl-bar.st-blocked { color: inherit; }
+
+.tl-root .tl-bar.is-epic[class*="st-"] .tl-bar-body {
+  background-color: var(--tl-accent, var(--interactive-accent));
+  border-color: transparent;
+}
+
+.tl-root .tl-bar.is-sub[class*="st-"] .tl-bar-body {
+  background-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 24%, var(--background-primary));
+  border-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 55%, transparent);
+  border-right: 0;
+  color: var(--text-normal);
+}
+
+/* --------------------------------------------------------- тёмная тема --- */
+.theme-dark .tl-root .tl-bar.is-epic .tl-bar-body,
+.theme-dark .tl-root .tl-bar.is-epic[class*="st-"] .tl-bar-body {
+  /* На тёмном фоне те же оттенки выглядят глуше — слегка поднимаем светлоту,
+     белый текст при этом остаётся контрастным. */
+  background-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 88%, #ffffff);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+}
+
+/* Тот же акцент в чипе ключа на тёмном фоне выглядит глухо — осветляем текст
+   и рамку, фон берём вторичный. */
+/* На тёмном фоне та же доля цвета темы почти не видна — подсветку делаем плотнее. */
+.theme-dark .tl-root .tl-row.is-epic.is-parent {
+  --tl-lane-bg: color-mix(in srgb, var(--tl-accent) 22%, var(--background-primary));
+  --tl-lane-bg-hover: color-mix(in srgb, var(--tl-accent) 30%, var(--background-primary));
+}
+
+.theme-dark .tl-root .tl-row.is-banded.is-root {
+  --tl-cell-bg: color-mix(in srgb, var(--tl-band) 26%, var(--background-primary));
+  --tl-cell-bg-hover: color-mix(in srgb, var(--tl-band) 34%, var(--background-primary));
+  --tl-lane-bg: var(--tl-cell-bg);
+  --tl-lane-bg-hover: var(--tl-cell-bg-hover);
+}
+
+/* В тёмной теме светлый текст ключа читается на приглушённом цвете полосы. */
+.theme-dark .tl-root .tl-key {
+  --tl-key-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 55%, var(--background-primary));
+}
+
+.theme-dark .tl-root .tl-row.is-sub .tl-key {
+  --tl-key-color: color-mix(in srgb, var(--tl-accent, var(--interactive-accent)) 35%, var(--background-primary));
+}
+
+.theme-dark .tl-root .tl-today { opacity: 0.8; }
+
+/* ------------------------------------------------------------ узкий вид -- */
+@media (max-width: 900px) {
+  .tl-root { --tl-left: 240px; }
+  .tl-legend { margin-left: 0; }
+}
+
+/* ------------------------------------------------- диалог подтверждения -- */
+.tl-modal-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--background-modifier-cover, rgba(0, 0, 0, 0.45));
+}
+
+.tl-modal {
+  width: 100%;
+  max-width: 440px;
+  padding: 18px 20px 16px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 12px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.tl-modal-title {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.tl-modal-text { margin-bottom: 8px; line-height: 1.5; }
+
+.tl-modal-list {
+  max-height: 168px;
+  margin-bottom: 10px;
+  padding: 6px 8px;
+  overflow-y: auto;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.tl-modal-list-item {
+  padding: 2px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-modal-note {
+  margin-bottom: 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.tl-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.tl-modal-buttons .tl-btn:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
