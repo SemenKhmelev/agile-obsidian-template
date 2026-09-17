@@ -1,0 +1,107 @@
+/* Схема-«звезда» артефактов спринта (_src/sections/_star.html) */
+
+.star {
+  margin: 0;
+  width: 100%;
+  max-width: 1120px;
+}
+
+.star-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Лучи */
+.star-ray {
+  stroke: rgba(168, 130, 255, .35);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+}
+
+/* Центр */
+.star-folder {
+  fill: #17141f;
+  stroke: #a882ff;
+  stroke-width: 1.5;
+}
+
+.star-folder-tab {
+  fill: #7c5cff;
+}
+
+.star-folder-name {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 24px;
+  font-weight: 700;
+  fill: #a882ff;
+}
+
+.star-folder-sub {
+  font-size: 13px;
+  fill: #9c96ad;
+}
+
+/* Карточки */
+.star-card {
+  fill: #17141f;
+  stroke: rgba(168, 130, 255, .14);
+  stroke-width: 1;
+}
+
+.star-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  fill: #9c96ad;
+}
+
+.star-name {
+  font-size: 16px;
+  font-weight: 600;
+  fill: #e8e4f0;
+}
+
+.star-path {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  fill: #a882ff;
+}
+
+/* Лёгкое появление: центр, затем лучи и карточки по очереди */
+.star-center,
+.star-node {
+  animation: star-fade .5s ease-out both;
+}
+
+.star-rays {
+  animation: star-fade .6s ease-out .2s both;
+}
+
+.star-node-1 { animation-delay: .25s; }
+.star-node-2 { animation-delay: .35s; }
+.star-node-3 { animation-delay: .45s; }
+.star-node-4 { animation-delay: .55s; }
+.star-node-5 { animation-delay: .65s; }
+
+@keyframes star-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-center,
+  .star-node,
+  .star-rays {
+    animation: none;
+  }
+}
+
+/* На телефоне схему прячем: ниже на странице тот же список из пяти строк */
+@media (max-width: 719px) {
+  .star {
+    display: none;
+  }
+}

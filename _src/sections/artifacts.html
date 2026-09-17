@@ -1,0 +1,91 @@
+<section class="section reveal" id="artifacts" aria-labelledby="artifacts-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">06 / ARTIFACTS</p>
+      <h2 id="artifacts-title">{{artifacts.title}}</h2>
+      <p>{{artifacts.lead}}</p>
+    </div>
+    <!-- Схема-«звезда»: пять артефактов спринта вокруг папки sprintN/ -->
+    <figure class="star" aria-label="{{artifacts.star_label}}">
+      <svg class="star-svg" viewBox="0 0 1120 600" role="img" aria-labelledby="star-title star-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="star-title">{{artifacts.star_label}}</title>
+        <desc id="star-desc">{{artifacts.star_desc}}</desc>
+
+        <!-- Лучи от центра к карточкам -->
+        <g class="star-rays" aria-hidden="true">
+          <line class="star-ray" x1="560" y1="320" x2="560" y2="96" />
+          <line class="star-ray" x1="560" y1="320" x2="910" y2="236" />
+          <line class="star-ray" x1="560" y1="320" x2="866" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="254" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="210" y2="236" />
+        </g>
+
+        <!-- Центр: папка спринта -->
+        <g class="star-center" aria-hidden="true">
+          <path class="star-folder-tab" d="M480 268 v-12 a8 8 0 0 1 8 -8 h40 l14 12 v8 z" />
+          <rect class="star-folder" x="470" y="266" width="180" height="108" rx="12" />
+          <text class="star-folder-name" x="560" y="318" text-anchor="middle">sprintN/</text>
+          <text class="star-folder-sub" x="560" y="346" text-anchor="middle">{{artifacts.center_caption}}</text>
+        </g>
+
+        <!-- Карточки артефактов -->
+        <g class="star-node star-node-1">
+          <rect class="star-card" x="420" y="48" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="436" y="74">{{artifacts.rows.0.when}}</text>
+          <text class="star-name" x="436" y="100">{{artifacts.rows.0.star_title}}</text>
+          <text class="star-path" x="436" y="126">{{artifacts.rows.0.star_path}}</text>
+        </g>
+
+        <g class="star-node star-node-2">
+          <rect class="star-card" x="770" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="786" y="214">{{artifacts.rows.1.when}}</text>
+          <text class="star-name" x="786" y="240">{{artifacts.rows.1.star_title}}</text>
+          <text class="star-path" x="786" y="266">{{artifacts.rows.1.star_path}}</text>
+        </g>
+
+        <g class="star-node star-node-3">
+          <rect class="star-card" x="736" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="752" y="498">{{artifacts.rows.2.when}}</text>
+          <text class="star-name" x="752" y="524">{{artifacts.rows.2.star_title}}</text>
+          <text class="star-path" x="752" y="550">{{artifacts.rows.2.star_path}}</text>
+        </g>
+
+        <g class="star-node star-node-4">
+          <rect class="star-card" x="104" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="120" y="498">{{artifacts.rows.3.when}}</text>
+          <text class="star-name" x="120" y="524">{{artifacts.rows.3.star_title}}</text>
+          <text class="star-path" x="120" y="550">{{artifacts.rows.3.star_path}}</text>
+        </g>
+
+        <g class="star-node star-node-5">
+          <rect class="star-card" x="70" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="86" y="214">{{artifacts.rows.4.when}}</text>
+          <text class="star-name" x="86" y="240">{{artifacts.rows.4.star_title}}</text>
+          <text class="star-path" x="86" y="266">{{artifacts.rows.4.star_path}}</text>
+        </g>
+      </svg>
+    </figure>
+    <div class="artifact-list">
+      <!-- BEGIN loop:artifacts.rows -->
+      <article class="artifact-row">
+        <p class="artifact-when">{{item.when}}</p>
+        <div class="artifact-body">
+          <h3>{{item.title}}</h3>
+          <p class="artifact-path"><code>{{item.path}}</code></p>
+          <p>{{item.text}}</p>
+        </div>
+      </article>
+      <!-- END loop:artifacts.rows -->
+    </div>
+    <div class="feature-shots">
+      <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/roadmap.webp" data-lightbox-alt="{{artifacts.roadmap_alt}}">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="{{site.asset_prefix}}img/roadmap.webp" width="1500" height="1000" loading="lazy" alt="{{artifacts.roadmap_alt}}">
+      </button>
+      <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/timeline.webp" data-lightbox-alt="{{artifacts.timeline_alt}}">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="{{site.asset_prefix}}img/timeline.webp" width="1500" height="600" loading="lazy" alt="{{artifacts.timeline_alt}}">
+      </button>
+    </div>
+  </div>
+</section>

@@ -41,7 +41,7 @@
         
         <a href="#workflow">Workflow</a>
         
-        <a href="#features">Features</a>
+        <a href="#artifacts">Artifacts</a>
         
         <a href="#start">Start</a>
         
@@ -355,61 +355,118 @@
   </div>
 </section>
 
-    <section class="section reveal" id="features" aria-labelledby="features-title">
+    <section class="section reveal" id="artifacts" aria-labelledby="artifacts-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">06 / FEATURES</p>
-      <h2 id="features-title">What is inside</h2>
-      <p>The template includes plugins and scripts. Two demo sprints with a fictional team show how the workflow fits together.</p>
+      <p class="section-kicker">06 / ARTIFACTS</p>
+      <h2 id="artifacts-title">Every ritual has its file</h2>
+      <p>Each team practice has a file behind it. Here is what gets opened, when and what for.</p>
     </div>
-    <div class="feature-grid">
+    <!-- Схема-«звезда»: пять артефактов спринта вокруг папки sprintN/ -->
+    <figure class="star" aria-label="Sprint artifacts in a single folder">
+      <svg class="star-svg" viewBox="0 0 1120 600" role="img" aria-labelledby="star-title star-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="star-title">Sprint artifacts in a single folder</title>
+        <desc id="star-desc">At the centre is the sprint folder. Around it are five files: the daily note in comments, the board.md board, the Roadmap/Timeline.md roadmap, reports with the feedback.md board, and the closed sprints sprint1 and sprint2. Every team practice has its own file, and all of them live in the sprint folder.</desc>
+
+        <!-- Лучи от центра к карточкам -->
+        <g class="star-rays" aria-hidden="true">
+          <line class="star-ray" x1="560" y1="320" x2="560" y2="96" />
+          <line class="star-ray" x1="560" y1="320" x2="910" y2="236" />
+          <line class="star-ray" x1="560" y1="320" x2="866" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="254" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="210" y2="236" />
+        </g>
+
+        <!-- Центр: папка спринта -->
+        <g class="star-center" aria-hidden="true">
+          <path class="star-folder-tab" d="M480 268 v-12 a8 8 0 0 1 8 -8 h40 l14 12 v8 z" />
+          <rect class="star-folder" x="470" y="266" width="180" height="108" rx="12" />
+          <text class="star-folder-name" x="560" y="318" text-anchor="middle">sprintN/</text>
+          <text class="star-folder-sub" x="560" y="346" text-anchor="middle">the sprint folder</text>
+        </g>
+
+        <!-- Карточки артефактов -->
+        <g class="star-node star-node-1">
+          <rect class="star-card" x="420" y="48" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="436" y="74">Daily, one minute</text>
+          <text class="star-name" x="436" y="100">The daily note</text>
+          <text class="star-path" x="436" y="126">comments/2024-01-25-Name.md</text>
+        </g>
+
+        <g class="star-node star-node-2">
+          <rect class="star-card" x="770" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="786" y="214">Stand-up</text>
+          <text class="star-name" x="786" y="240">Board and member feed</text>
+          <text class="star-path" x="786" y="266">board.md</text>
+        </g>
+
+        <g class="star-node star-node-3">
+          <rect class="star-card" x="736" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="752" y="498">Planning</text>
+          <text class="star-name" x="752" y="524">Roadmap and Gantt chart</text>
+          <text class="star-path" x="752" y="550">Roadmap/Timeline.md</text>
+        </g>
+
+        <g class="star-node star-node-4">
+          <rect class="star-card" x="104" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="120" y="498">Retrospective</text>
+          <text class="star-name" x="120" y="524">Reports and feedback board</text>
+          <text class="star-path" x="120" y="550">reports/ · feedback.md</text>
+        </g>
+
+        <g class="star-node star-node-5">
+          <rect class="star-card" x="70" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="86" y="214">Any time later</text>
+          <text class="star-name" x="86" y="240">Closed sprints</text>
+          <text class="star-path" x="86" y="266">sprint1/ · sprint2/</text>
+        </g>
+      </svg>
+    </figure>
+    <div class="artifact-list">
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Time tracking by kind of work</h3>
-        <p>Set the activity type in each entry: development, design, rituals or support</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Daily, one minute</p>
+        <div class="artifact-body">
+          <h3>The daily note</h3>
+          <p class="artifact-path"><code>sprintN/comments/2024-01-25-Full Name.md</code></p>
+          <p>Hours per task and kind of work. A line is added by a toolbar button, a hotkey or an AI agent: the repository ships an <code>obsidian-time-log</code> skill that fills the day in and checks the total.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Spent-to-estimate fraction</h3>
-        <p>On the card, in the feed and in reports, with over-budget highlighting</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Stand-up</p>
+        <div class="artifact-body">
+          <h3>The sprint board and a member feed</h3>
+          <p class="artifact-path"><code>sprintN/board.md</code></p>
+          <p>Who is on which task and at what stage. A click on an avatar filters the board, a right click opens that persons entries day by day. Cards carry a spent-to-estimate fraction that turns red when the estimate is passed.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Task history across sprints</h3>
-        <p>Task copies are linked across sprints, with time spent added together</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Planning</p>
+        <div class="artifact-body">
+          <h3>Roadmap: Gantt chart and the wide view</h3>
+          <p class="artifact-path"><code>Roadmap/Timeline.md · Roadmap/Визуализация.md</code></p>
+          <p>Theme and epic dates change by dragging the bars, and the hierarchy of visions and themes unfolds for the discussion. A sprint task points at its epic through the <code>parent</code> field, so you can see what it adds up to.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Time debt</h3>
-        <p>Unworked hours are recorded and cleared as they are made up</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Retrospective</p>
+        <div class="artifact-body">
+          <h3>Sprint reports and the feedback board</h3>
+          <p class="artifact-path"><code>sprintN/reports/ · sprintN/feedback.md</code></p>
+          <p>Estimate accuracy, hours by kind of work, overloaded days, the task history across sprints and the time debt. Feedback accumulates through the whole iteration instead of being recalled on the last day.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Sprint reports</h3>
-        <p>Estimate accuracy, hours per person and per day, charts by kind of work</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Roadmap</h3>
-        <p>Visions, themes and epics linked to sprint tasks</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Gantt chart</h3>
-        <p>Dates change by dragging the bars right on the chart</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Avatar filter and member feed</h3>
-        <p>Click an avatar to filter the board; right-click to open the feed</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Any time later</p>
+        <div class="artifact-body">
+          <h3>Closed sprints</h3>
+          <p class="artifact-path"><code>sprint1/ · sprint2/ · …</code></p>
+          <p>A sprint stays a folder of its own, exactly as it ended: board, tasks, notes and reports. Coming back to it a year later means opening the directory — nothing is archived or migrated away.</p>
+        </div>
       </article>
       
     </div>
@@ -441,7 +498,7 @@
       
       <li><span aria-hidden="true">—</span><p>The backlog covers the current sprint. Longer-term planning happens elsewhere.</p></li>
       
-      <li><span aria-hidden="true">—</span><p>Board edits can cause merge conflicts. Frequent syncing makes them less likely.</p></li>
+      <li><span aria-hidden="true">—</span><p>No complete protection from merge conflicts. The structure keeps people in separate files: a daily note of your own, a note of its own for every task, so the shared board is the only place left to collide on. Moving the card state into the task file, and removing that case as well, is planned.</p></li>
       
       <li><span aria-hidden="true">—</span><p>The template is built for a small team. Two hundred people need a corporate tracker.</p></li>
       

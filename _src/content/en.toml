@@ -19,7 +19,7 @@ items = [
   { href = '#data', label = 'Your data' },
   { href = '#agents', label = 'AI agents' },
   { href = '#workflow', label = 'Workflow' },
-  { href = '#features', label = 'Features' },
+  { href = '#artifacts', label = 'Artifacts' },
   { href = '#start', label = 'Start' },
 ]
 
@@ -166,43 +166,54 @@ text = 'The command palette has `Git: Pull` and `Git: Commit-and-sync` pinned: t
 shot = 'palette.webp'
 shot_alt = 'Obsidian command palette with Git: Pull and Git: Commit-and-sync pinned at the top'
 
-[features]
-title = 'What is inside'
-lead = 'The template includes plugins and scripts. Two demo sprints with a fictional team show how the workflow fits together.'
+[artifacts]
+title = 'Every ritual has its file'
+lead = 'Each team practice has a file behind it. Here is what gets opened, when and what for.'
+center_caption = 'the sprint folder'
+star_label = 'Sprint artifacts in a single folder'
+star_desc = 'At the centre is the sprint folder. Around it are five files: the daily note in comments, the board.md board, the Roadmap/Timeline.md roadmap, reports with the feedback.md board, and the closed sprints sprint1 and sprint2. Every team practice has its own file, and all of them live in the sprint folder.'
 roadmap_alt = 'Roadmap visualisation: visions, themes and epics as a hierarchy'
 timeline_alt = 'Gantt chart of roadmap themes and epics'
 
-[[features.items]]
-title = 'Time tracking by kind of work'
-text = 'Set the activity type in each entry: development, design, rituals or support'
+[[artifacts.rows]]
+when = 'Daily, one minute'
+title = 'The daily note'
+path = 'sprintN/comments/2024-01-25-Full Name.md'
+star_title = 'The daily note'
+star_path = 'comments/2024-01-25-Name.md'
+text = 'Hours per task and kind of work. A line is added by a toolbar button, a hotkey or an AI agent: the repository ships an `obsidian-time-log` skill that fills the day in and checks the total.'
 
-[[features.items]]
-title = 'Spent-to-estimate fraction'
-text = 'On the card, in the feed and in reports, with over-budget highlighting'
+[[artifacts.rows]]
+when = 'Stand-up'
+title = 'The sprint board and a member feed'
+path = 'sprintN/board.md'
+star_title = 'Board and member feed'
+star_path = 'board.md'
+text = 'Who is on which task and at what stage. A click on an avatar filters the board, a right click opens that persons entries day by day. Cards carry a spent-to-estimate fraction that turns red when the estimate is passed.'
 
-[[features.items]]
-title = 'Task history across sprints'
-text = 'Task copies are linked across sprints, with time spent added together'
+[[artifacts.rows]]
+when = 'Planning'
+title = 'Roadmap: Gantt chart and the wide view'
+path = 'Roadmap/Timeline.md · Roadmap/Визуализация.md'
+star_title = 'Roadmap and Gantt chart'
+star_path = 'Roadmap/Timeline.md'
+text = 'Theme and epic dates change by dragging the bars, and the hierarchy of visions and themes unfolds for the discussion. A sprint task points at its epic through the `parent` field, so you can see what it adds up to.'
 
-[[features.items]]
-title = 'Time debt'
-text = 'Unworked hours are recorded and cleared as they are made up'
+[[artifacts.rows]]
+when = 'Retrospective'
+title = 'Sprint reports and the feedback board'
+path = 'sprintN/reports/ · sprintN/feedback.md'
+star_title = 'Reports and feedback board'
+star_path = 'reports/ · feedback.md'
+text = 'Estimate accuracy, hours by kind of work, overloaded days, the task history across sprints and the time debt. Feedback accumulates through the whole iteration instead of being recalled on the last day.'
 
-[[features.items]]
-title = 'Sprint reports'
-text = 'Estimate accuracy, hours per person and per day, charts by kind of work'
-
-[[features.items]]
-title = 'Roadmap'
-text = 'Visions, themes and epics linked to sprint tasks'
-
-[[features.items]]
-title = 'Gantt chart'
-text = 'Dates change by dragging the bars right on the chart'
-
-[[features.items]]
-title = 'Avatar filter and member feed'
-text = 'Click an avatar to filter the board; right-click to open the feed'
+[[artifacts.rows]]
+when = 'Any time later'
+title = 'Closed sprints'
+path = 'sprint1/ · sprint2/ · …'
+star_title = 'Closed sprints'
+star_path = 'sprint1/ · sprint2/'
+text = 'A sprint stays a folder of its own, exactly as it ended: board, tasks, notes and reports. Coming back to it a year later means opening the directory — nothing is archived or migrated away.'
 
 [limits]
 title = 'Limitations'
@@ -211,7 +222,7 @@ items = [
   'Notifications and mentions are not supported.',
   'Repository access covers the entire sprint. More granular permissions are not available.',
   'The backlog covers the current sprint. Longer-term planning happens elsewhere.',
-  'Board edits can cause merge conflicts. Frequent syncing makes them less likely.',
+  'No complete protection from merge conflicts. The structure keeps people in separate files: a daily note of your own, a note of its own for every task, so the shared board is the only place left to collide on. Moving the card state into the task file, and removing that case as well, is planned.',
   'The template is built for a small team. Two hundred people need a corporate tracker.',
 ]
 

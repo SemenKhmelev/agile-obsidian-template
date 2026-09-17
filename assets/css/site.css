@@ -825,6 +825,55 @@ li code {
   font-size: 1.2rem;
 }
 
+/* Матрица «ритуал → артефакт»: слева когда, справа что открывают и зачем. */
+.artifact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 28px;
+}
+
+.artifact-row {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 24px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.artifact-when {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: .76rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 3px;
+}
+
+.artifact-body h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.artifact-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.artifact-path {
+  margin: 0 0 10px !important;
+  overflow-x: auto;
+}
+
+.artifact-path code {
+  font-size: .82rem;
+  color: var(--text);
+  white-space: nowrap;
+}
+
 .feature-shots {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1052,6 +1101,11 @@ li code {
 }
 
 @media (max-width: 900px) {
+  .artifact-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
   .site-nav { display: none; }
   .nav-actions { margin-left: auto; }
   .workflow-list::before { left: 10px; }
@@ -1073,6 +1127,10 @@ li code {
 }
 
 @media (max-width: 640px) {
+  /* На телефоне длинные пути переносим, а не прячем в горизонтальную прокрутку. */
+  .artifact-path { overflow-x: visible; }
+  .artifact-path code { white-space: normal; overflow-wrap: anywhere; }
+
   .container { width: min(calc(100% - 32px), var(--maxw)); }
   .nav-shell { min-height: 60px; gap: 12px; }
   .brand { font-size: .78rem; }
@@ -1116,5 +1174,113 @@ li code {
   .js .reveal-ready {
     transform: none;
     opacity: 1;
+  }
+}
+
+/* Схема-«звезда» артефактов спринта (_src/sections/_star.html) */
+
+.star {
+  margin: 0;
+  width: 100%;
+  max-width: 1120px;
+}
+
+.star-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Лучи */
+.star-ray {
+  stroke: rgba(168, 130, 255, .35);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+}
+
+/* Центр */
+.star-folder {
+  fill: #17141f;
+  stroke: #a882ff;
+  stroke-width: 1.5;
+}
+
+.star-folder-tab {
+  fill: #7c5cff;
+}
+
+.star-folder-name {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 24px;
+  font-weight: 700;
+  fill: #a882ff;
+}
+
+.star-folder-sub {
+  font-size: 13px;
+  fill: #9c96ad;
+}
+
+/* Карточки */
+.star-card {
+  fill: #17141f;
+  stroke: rgba(168, 130, 255, .14);
+  stroke-width: 1;
+}
+
+.star-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  fill: #9c96ad;
+}
+
+.star-name {
+  font-size: 15px;
+  font-weight: 600;
+  fill: #e8e4f0;
+}
+
+.star-path {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 13px;
+  fill: #a882ff;
+}
+
+/* Лёгкое появление: центр, затем лучи и карточки по очереди */
+.star-center,
+.star-node {
+  animation: star-fade .5s ease-out both;
+}
+
+.star-rays {
+  animation: star-fade .6s ease-out .2s both;
+}
+
+.star-node-1 { animation-delay: .25s; }
+.star-node-2 { animation-delay: .35s; }
+.star-node-3 { animation-delay: .45s; }
+.star-node-4 { animation-delay: .55s; }
+.star-node-5 { animation-delay: .65s; }
+
+@keyframes star-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-center,
+  .star-node,
+  .star-rays {
+    animation: none;
+  }
+}
+
+/* На телефоне схему прячем: ниже на странице тот же список из пяти строк */
+@media (max-width: 719px) {
+  .star {
+    display: none;
   }
 }

@@ -13,7 +13,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
-SECTIONS = ("hero", "stack", "data", "text", "agents", "workflow", "features", "limits", "start")
+SECTIONS = ("hero", "stack", "data", "text", "agents", "workflow", "artifacts", "limits", "start")
 SITE_URL = "https://semenkhmelev.github.io/agile-obsidian-template/"
 
 PLACEHOLDER_RE = re.compile(r"{{\s*([\w.-]+)\s*}}")
@@ -48,6 +48,10 @@ def resolve(data: dict[str, Any], path: str, item: Any = None) -> Any:
         value = data
 
     for part in parts:
+        # числовой шаг — обращение к элементу массива: rows.0.title
+        if isinstance(value, list) and part.isdigit() and int(part) < len(value):
+            value = value[int(part)]
+            continue
         if not isinstance(value, dict) or part not in value:
             raise BuildError(f"Не найден ключ шаблона: {path}")
         value = value[part]

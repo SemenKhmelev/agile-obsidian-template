@@ -41,7 +41,7 @@
         
         <a href="#workflow">Воркфлоу</a>
         
-        <a href="#features">Возможности</a>
+        <a href="#artifacts">Артефакты</a>
         
         <a href="#start">Начать</a>
         
@@ -355,61 +355,118 @@
   </div>
 </section>
 
-    <section class="section reveal" id="features" aria-labelledby="features-title">
+    <section class="section reveal" id="artifacts" aria-labelledby="artifacts-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">06 / FEATURES</p>
-      <h2 id="features-title">Что внутри</h2>
-      <p>В шаблон включены плагины и скрипты. Два демо-спринта вымышленной команды показывают, как устроена работа.</p>
+      <p class="section-kicker">06 / ARTIFACTS</p>
+      <h2 id="artifacts-title">Ритуал и его артефакт</h2>
+      <p>У каждой практики команды есть свой файл. Ниже — что открывают, когда и зачем.</p>
     </div>
-    <div class="feature-grid">
+    <!-- Схема-«звезда»: пять артефактов спринта вокруг папки sprintN/ -->
+    <figure class="star" aria-label="Артефакты спринта в одной папке">
+      <svg class="star-svg" viewBox="0 0 1120 600" role="img" aria-labelledby="star-title star-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="star-title">Артефакты спринта в одной папке</title>
+        <desc id="star-desc">В центре папка спринта. Вокруг неё пять файлов: запись за день в comments, доска board.md, роадмап Roadmap/Timeline.md, отчёты в reports с доской фидбека feedback.md и закрытые спринты sprint1 и sprint2. У каждой практики команды свой файл, и все они лежат в папке спринта.</desc>
+
+        <!-- Лучи от центра к карточкам -->
+        <g class="star-rays" aria-hidden="true">
+          <line class="star-ray" x1="560" y1="320" x2="560" y2="96" />
+          <line class="star-ray" x1="560" y1="320" x2="910" y2="236" />
+          <line class="star-ray" x1="560" y1="320" x2="866" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="254" y2="520" />
+          <line class="star-ray" x1="560" y1="320" x2="210" y2="236" />
+        </g>
+
+        <!-- Центр: папка спринта -->
+        <g class="star-center" aria-hidden="true">
+          <path class="star-folder-tab" d="M480 268 v-12 a8 8 0 0 1 8 -8 h40 l14 12 v8 z" />
+          <rect class="star-folder" x="470" y="266" width="180" height="108" rx="12" />
+          <text class="star-folder-name" x="560" y="318" text-anchor="middle">sprintN/</text>
+          <text class="star-folder-sub" x="560" y="346" text-anchor="middle">папка спринта</text>
+        </g>
+
+        <!-- Карточки артефактов -->
+        <g class="star-node star-node-1">
+          <rect class="star-card" x="420" y="48" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="436" y="74">Каждый день, минута</text>
+          <text class="star-name" x="436" y="100">Запись за день</text>
+          <text class="star-path" x="436" y="126">comments/2024-01-25-Имя.md</text>
+        </g>
+
+        <g class="star-node star-node-2">
+          <rect class="star-card" x="770" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="786" y="214">Ежедневный митинг</text>
+          <text class="star-name" x="786" y="240">Доска и лента участника</text>
+          <text class="star-path" x="786" y="266">board.md</text>
+        </g>
+
+        <g class="star-node star-node-3">
+          <rect class="star-card" x="736" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="752" y="498">Планирование</text>
+          <text class="star-name" x="752" y="524">Роадмап и диаграмма Ганта</text>
+          <text class="star-path" x="752" y="550">Roadmap/Timeline.md</text>
+        </g>
+
+        <g class="star-node star-node-4">
+          <rect class="star-card" x="104" y="472" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="120" y="498">Ретроспектива</text>
+          <text class="star-name" x="120" y="524">Отчёты и доска фидбека</text>
+          <text class="star-path" x="120" y="550">reports/ · feedback.md</text>
+        </g>
+
+        <g class="star-node star-node-5">
+          <rect class="star-card" x="70" y="188" width="280" height="96" rx="12" />
+          <text class="star-kicker" x="86" y="214">В любой момент</text>
+          <text class="star-name" x="86" y="240">Закрытые спринты</text>
+          <text class="star-path" x="86" y="266">sprint1/ · sprint2/</text>
+        </g>
+      </svg>
+    </figure>
+    <div class="artifact-list">
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Учёт времени по типам деятельности</h3>
-        <p>Тип деятельности задаётся в строке: разработка, дизайн, ритуалы или поддержка</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Каждый день, минута</p>
+        <div class="artifact-body">
+          <h3>Запись за день</h3>
+          <p class="artifact-path"><code>sprintN/comments/2024-01-25-Имя Фамилия.md</code></p>
+          <p>Часы по задачам и типам деятельности. Строка добавляется кнопкой на панели, горячей клавишей или AI-агентом: в репозитории лежит скилл <code>obsidian-time-log</code>, который заносит день и сверяет сумму.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Дробь «потрачено / оценка»</h3>
-        <p>На карточке, в ленте и в отчётах, с подсветкой перерасхода</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Ежедневный митинг</p>
+        <div class="artifact-body">
+          <h3>Доска спринта и лента участника</h3>
+          <p class="artifact-path"><code>sprintN/board.md</code></p>
+          <p>Кто на какой задаче и на каком этапе. Клик по аватарке фильтрует доску, правый клик открывает ленту записей человека по дням. На карточке дробь «потрачено / оценка», красная при перерасходе.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Сквозная история задачи</h3>
-        <p>Копии задачи связаны между спринтами; потраченное время суммируется</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Планирование</p>
+        <div class="artifact-body">
+          <h3>Роадмап: диаграмма Ганта и общий вид</h3>
+          <p class="artifact-path"><code>Roadmap/Timeline.md · Roadmap/Визуализация.md</code></p>
+          <p>Сроки тем и эпиков меняются перетаскиванием полос, иерархия видений и тем разворачивается для общего разговора. Задача спринта привязывается к эпику полем <code>parent</code>, поэтому видно, во что она складывается.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Временной долг</h3>
-        <p>Недоработанные часы фиксируются и закрываются отработкой</p>
+      <article class="artifact-row">
+        <p class="artifact-when">Ретроспектива</p>
+        <div class="artifact-body">
+          <h3>Отчёты спринта и доска фидбека</h3>
+          <p class="artifact-path"><code>sprintN/reports/ · sprintN/feedback.md</code></p>
+          <p>Точность оценок, распределение часов по типам деятельности, перегрузки по дням, сквозная история задачи и временной долг. Фидбек копится всю итерацию, а не вспоминается в последний день.</p>
+        </div>
       </article>
       
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Отчёты спринта</h3>
-        <p>Точность оценок, часы по людям и дням, графики по типам деятельности</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Roadmap</h3>
-        <p>Видения, темы и эпики, связанные со спринтовыми задачами</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Диаграмма Ганта</h3>
-        <p>Сроки меняются перетаскиванием полос прямо на диаграмме</p>
-      </article>
-      
-      <article class="feature-card">
-        <span aria-hidden="true">+</span>
-        <h3>Фильтр по аватаркам и лента участника</h3>
-        <p>Доска фильтруется кликом, лента открывается правым кликом</p>
+      <article class="artifact-row">
+        <p class="artifact-when">В любой момент</p>
+        <div class="artifact-body">
+          <h3>Закрытые спринты</h3>
+          <p class="artifact-path"><code>sprint1/ · sprint2/ · …</code></p>
+          <p>Спринт остаётся отдельной папкой в том виде, в каком закончился: доска, задачи, записи и отчёты. Чтобы вернуться к нему через год, достаточно открыть каталог — ничего не архивируется и не переносится.</p>
+        </div>
       </article>
       
     </div>
@@ -441,7 +498,7 @@
       
       <li><span aria-hidden="true">—</span><p>Бэклог ограничен текущим спринтом. Дальнейшее планирование ведётся отдельно.</p></li>
       
-      <li><span aria-hidden="true">—</span><p>На доске возможны мердж-конфликты. Частый обмен изменениями снижает их вероятность.</p></li>
+      <li><span aria-hidden="true">—</span><p>Полной защиты от мердж-конфликтов. Структура разводит людей по файлам: свой файл дня у каждого, своя заметка у каждой задачи, — поэтому столкнуться можно только на общей доске. Перенести состояние карточки в файл задачи и снять этот случай — в планах.</p></li>
       
       <li><span aria-hidden="true">—</span><p>Шаблон рассчитан на небольшую команду. Для двухсот человек нужен корпоративный трекер.</p></li>
       
