@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="{{meta.lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0f0d15">
+  <title>{{meta.title}}</title>
+  <meta name="description" content="{{meta.description}}">
+  <link rel="canonical" href="{{site.canonical}}">
+  <link rel="alternate" hreflang="ru" href="{{site.canonical_ru}}">
+  <link rel="alternate" hreflang="en" href="{{site.canonical_en}}">
+  <link rel="alternate" hreflang="x-default" href="{{site.canonical_ru}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{nav.brand}}">
+  <meta property="og:title" content="{{meta.title}}">
+  <meta property="og:description" content="{{meta.description}}">
+  <meta property="og:url" content="{{site.canonical}}">
+  <meta property="og:image" content="{{site.canonical_ru}}assets/img/og-image.png">
+  <meta property="og:locale" content="{{meta.lang}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{meta.title}}">
+  <meta name="twitter:description" content="{{meta.description}}">
+  <meta name="twitter:image" content="{{site.canonical_ru}}assets/img/og-image.png">
+  <link rel="icon" href="{{site.asset_prefix}}img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{site.asset_prefix}}css/site.css">
+  <script src="{{site.asset_prefix}}js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">{{meta.skip_link}}</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="{{nav.brand}}">{{nav.brand}}</a>
+      <nav class="site-nav" aria-label="{{nav.brand}}">
+        <!-- BEGIN loop:nav.items -->
+        <a href="{{item.href}}">{{item.label}}</a>
+        <!-- END loop:nav.items -->
+      </nav>
+      <div class="nav-actions">
+        <a class="language" href="{{meta.alt_lang_href}}" lang="{{site.alt_lang}}" hreflang="{{site.alt_lang}}" aria-label="{{meta.alt_lang_full}}">{{meta.alt_lang_label}}</a>
+        <a class="button button-small" href="{{meta.repo_url}}">{{nav.github}}<span aria-hidden="true"> ↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    {{#hero}}
+    {{#data}}
+    {{#text}}
+    {{#agents}}
+    {{#workflow}}
+    {{#features}}
+    {{#limits}}
+    {{#start}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#top">{{nav.brand}}</a>
+        <p>{{footer.tagline}}</p>
+      </div>
+      <nav class="footer-links" aria-label="{{footer.tagline}}">
+        <a href="{{meta.repo_url}}#readme">{{footer.readme}}</a>
+        <a href="{{meta.repo_url}}/blob/master/CONTRIBUTING.md">{{footer.contributing}}</a>
+        <a href="https://habr.com/ru/articles/864466/">{{footer.article}}</a>
+      </nav>
+      <p class="license">{{footer.license}}</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox>
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="{{site.close_label}}">×</button>
+    <img data-lightbox-image alt="">
+  </dialog>
+</body>
+</html>

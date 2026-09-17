@@ -1,0 +1,25 @@
+<section class="section start-section reveal" id="start" aria-labelledby="start-title">
+  <div class="container start-card">
+    <div class="section-heading">
+      <p class="section-kicker">07 / START</p>
+      <h2 id="start-title">{{start.title}}</h2>
+      <p>{{start.lead}}</p>
+    </div>
+    <div class="command" data-copy-wrap>
+      <code data-copy-value>{{start.command}}</code>
+      <button type="button" data-copy data-label="{{start.copy}}" data-copied="{{start.copied}}">{{start.copy}}</button>
+      <span class="sr-only" aria-live="polite" data-copy-status></span>
+    </div>
+    <ol class="start-steps">
+      <!-- BEGIN loop:start.steps -->
+      <li>
+        <div>
+          <h3>{{item.title}}</h3>
+          <p>{{item.text}}</p>
+        </div>
+      </li>
+      <!-- END loop:start.steps -->
+    </ol>
+    <a class="button button-primary start-button" href="{{meta.repo_url}}">{{hero.cta_primary}}<span aria-hidden="true"> ↗</span></a>
+  </div>
+</section>

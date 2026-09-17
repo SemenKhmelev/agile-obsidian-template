@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0f0d15">
+  <title>agile-obsidian — a sprint as a folder of files</title>
+  <meta name="description" content="An Obsidian template for team sprints: board, time tracking, reports and roadmap as plain markdown files in your own git repository. No server, no API.">
+  <link rel="canonical" href="https://semenkhmelev.github.io/agile-obsidian-template/en/">
+  <link rel="alternate" hreflang="ru" href="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <link rel="alternate" hreflang="en" href="https://semenkhmelev.github.io/agile-obsidian-template/en/">
+  <link rel="alternate" hreflang="x-default" href="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="agile-obsidian">
+  <meta property="og:title" content="agile-obsidian — a sprint as a folder of files">
+  <meta property="og:description" content="An Obsidian template for team sprints: board, time tracking, reports and roadmap as plain markdown files in your own git repository. No server, no API.">
+  <meta property="og:url" content="https://semenkhmelev.github.io/agile-obsidian-template/en/">
+  <meta property="og:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
+  <meta property="og:locale" content="en">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="agile-obsidian — a sprint as a folder of files">
+  <meta name="twitter:description" content="An Obsidian template for team sprints: board, time tracking, reports and roadmap as plain markdown files in your own git repository. No server, no API.">
+  <meta name="twitter:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script src="../assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="agile-obsidian">agile-obsidian</a>
+      <nav class="site-nav" aria-label="agile-obsidian">
+        
+        <a href="#data">Your data</a>
+        
+        <a href="#agents">AI agents</a>
+        
+        <a href="#workflow">Workflow</a>
+        
+        <a href="#features">Features</a>
+        
+        <a href="#start">Start</a>
+        
+      </nav>
+      <div class="nav-actions">
+        <a class="language" href="../" lang="ru" hreflang="ru" aria-label="Русский">RU</a>
+        <a class="button button-small" href="https://github.com/SemenKhmelev/agile-obsidian-template">GitHub<span aria-hidden="true"> ↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero-copy">
+    <p class="eyebrow">An Obsidian template for team sprints</p>
+    <h1 id="hero-title">A sprint is a folder of files</h1>
+    <p class="hero-lead">Run team sprints in your own git repository. The board, time entries, reports and roadmap are stored as markdown files. No server, API or third-party cloud is needed.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="https://github.com/SemenKhmelev/agile-obsidian-template">Get the template</a>
+      <a class="button button-secondary" href="#data">See how it works</a>
+    </div>
+    <p class="hero-note">Used by a team of 12 across 159 sprints · MIT · all content in plain text</p>
+  </div>
+  <div class="container hero-visual">
+    <button class="window screenshot-button" type="button" data-lightbox-src="../assets/img/board.webp" data-lightbox-alt="Sprint kanban board in Obsidian: task columns, member avatars in the left rail, cards showing a spent-to-estimate fraction">
+      <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img src="../assets/img/board.webp" width="1500" height="690" alt="Sprint kanban board in Obsidian: task columns, member avatars in the left rail, cards showing a spent-to-estimate fraction" fetchpriority="high">
+    </button>
+  </div>
+</section>
+
+    <section class="section reveal" id="data" aria-labelledby="data-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">01 / DATA</p>
+      <h2 id="data-title">Data in your repository</h2>
+      <p>A tracker holds team decisions, time spent and the reasons behind changes. In agile-obsidian, those records live in files with their revision history in git.</p>
+    </div>
+    <div class="cards data-cards">
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Records that outlasted the tool</h3>
+        <p>Our time tracking extension stopped working when its browser technology became obsolete. The project also changed owners. The records remained intact as files.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>A local copy for every teammate</h3>
+        <p>Each teammate has a complete copy of the repository on disk. Access to those files does not depend on a service plan or account status.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Use your usual editor</h3>
+        <p>Edit markdown with YAML headers in Obsidian, VS Code or vim. The same files can be searched with <code>grep</code> and read by Python scripts or AI agents.</p>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="text" aria-labelledby="text-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">02 / MARKDOWN</p>
+      <h2 id="text-title">One line, three views</h2>
+      <p>Add a line to your daily note. The board and report read it from the same file and display the time spent on the task.</p>
+    </div>
+    <div class="triptych" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="One line, three views">
+        <button id="tab-markdown" type="button" role="tab" aria-selected="true" aria-controls="panel-markdown">Markdown</button>
+        <button id="tab-board" type="button" role="tab" aria-selected="false" aria-controls="panel-board" tabindex="-1">Board</button>
+        <button id="tab-report" type="button" role="tab" aria-selected="false" aria-controls="panel-report" tabindex="-1">Report</button>
+      </div>
+      <div class="tab-panel" id="panel-markdown" role="tabpanel" aria-labelledby="tab-markdown">
+        <div class="code-sample" tabindex="0"><pre><code><span class="md-bullet">*</span> <span class="md-property">[cardref::</span> <span class="md-link">[[sprint2/tasks/Ошибка на открытии bpmn-фрейма|Ошибка на открытии bpmn-фрейма]]</span><span class="md-property">]</span>
+  <span class="md-property">[action::</span> <span class="md-value">fix</span><span class="md-property">]</span> <span class="md-property">[spent::</span> <span class="md-number">5</span><span class="md-property">]</span>
+  Удалось повторить ошибку.</code></pre></div>
+        <p class="caption">Each daily note entry includes a task link, an activity type and hours spent.</p>
+      </div>
+      <div class="tab-panel" id="panel-board" role="tabpanel" aria-labelledby="tab-board">
+        <button class="window screenshot-button compact-shot" type="button" data-lightbox-src="../assets/img/card.webp" data-lightbox-alt="A fragment of the sprint board: the review and done columns, with the highlighted card that shows a 39/55 fraction">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/card.webp" width="1680" height="876" loading="lazy" alt="A fragment of the sprint board: the review and done columns, with the highlighted card that shows a 39/55 fraction">
+        </button>
+        <p class="caption">The same task on the board. The spent-to-estimate fraction sits on the card and turns red when the estimate is passed, as on the neighbouring card in review.</p>
+      </div>
+      <div class="tab-panel" id="panel-report" role="tabpanel" aria-labelledby="tab-report">
+        <button class="window screenshot-button" type="button" data-lightbox-src="../assets/img/report.webp" data-lightbox-alt="Sprint task report: a table with estimates, time spent and task states">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/report.webp" width="1500" height="1000" loading="lazy" alt="Sprint task report: a table with estimates, time spent and task states">
+        </button>
+        <p class="caption">The sprint report gathers estimates, actuals and accuracy from the entries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="agents" aria-labelledby="agents-title">
+  <div class="container">
+    <div class="section-heading wide-heading">
+      <p class="section-kicker">03 / AI AGENTS</p>
+      <h2 id="agents-title">How an AI agent works with tasks</h2>
+      <p>An AI agent reads tasks and time entries directly from the repository. It edits the same markdown files the team uses.</p>
+    </div>
+    <div class="agent-compare">
+      <article class="compare-panel compare-closed">
+        <p class="compare-label"><span aria-hidden="true">×</span> API</p>
+        <h3>Accessing a service through its API</h3>
+        <ul>
+          
+          <li>Register an OAuth app and store its secret</li>
+          
+          <li>Learn the data schema and API versions</li>
+          
+          <li>Account for rate limits when fetching data</li>
+          
+          <li>Set up an MCP server or write code to call the API</li>
+          
+          <li>Assemble project context from query responses</li>
+          
+          <li>Review agent changes in the service interface</li>
+          
+        </ul>
+      </article>
+      <article class="compare-panel compare-files">
+        <p class="compare-label"><span aria-hidden="true">✓</span> FILES</p>
+        <h3>A folder of files</h3>
+        <ul>
+          
+          <li>Open the repository directory with <code>cd</code></li>
+          
+          <li>Search entries across sprints with <code>grep</code></li>
+          
+          <li>Edit lines in the task file</li>
+          
+          <li>Pass task history across sprints to the model as context</li>
+          
+          <li>Review agent changes with <code>git diff</code></li>
+          
+          <li>Undo agent commits with <code>git revert</code></li>
+          
+        </ul>
+      </article>
+    </div>
+    <div class="agent-points">
+      
+      <article>
+        <h3>Search entries</h3>
+        <p>The command <code>grep -r &quot;action:: dev&quot; sprint2/comments</code> finds development entries in the sprint.</p>
+      </article>
+      
+      <article>
+        <h3>Log time</h3>
+        <p>The agent adds <code>[spent:: 2]</code> to a daily note entry, using the same format as a manual entry.</p>
+      </article>
+      
+      <article>
+        <h3>Task history</h3>
+        <p>The <code>previous</code> field links copies of a task across sprints. These links let you gather its history for the model.</p>
+      </article>
+      
+      <article>
+        <h3>Review changes</h3>
+        <p>Changed lines appear in <code>git diff</code>. Once edits are committed, you can undo the commit with <code>git revert</code>.</p>
+      </article>
+      
+    </div>
+    <figure class="terminal">
+      <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>agent — sprint2</span></div>
+      <pre><code><span class="prompt">$</span> grep -R -n "action:: fix" sprint2/comments
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md:18:</span>
+  [action:: fix] [spent:: 5] Удалось повторить ошибку.
+
+<span class="prompt">$</span> git diff --stat
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md | 2 +-</span>
+ 1 file changed, 1 insertion(+), 1 deletion(-)<span class="cursor" aria-hidden="true"></span></code></pre>
+      <figcaption>An agent working with tracker files</figcaption>
+    </figure>
+  </div>
+</section>
+
+    <section class="section reveal" id="workflow" aria-labelledby="workflow-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">04 / WORKFLOW</p>
+      <h2 id="workflow-title">The sprint cycle</h2>
+      <p>The team follows six steps every two weeks. A script prepares the new sprint, members update tasks and log time, and reports gather the data for the retrospective.</p>
+    </div>
+    <div class="workflow-list">
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">01</span>
+          <h3>Create a new sprint</h3>
+          <p>The <code>create_new_sprint.py</code> script copies the previous sprint structure, removes completed work, carries over unfinished tasks, links them to previous versions and points plugin settings to the new folder.</p>
+        </div>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">02</span>
+          <h3>Sprint tasks and board</h3>
+          <p>Each task file contains an estimate, a checklist of stages and a link to the previous sprint. The Kanban plugin edits the board in <code>board.md</code>. Git stores the file, so the team shares the same column layout.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="../assets/img/board.webp" data-lightbox-alt="Sprint board with columns and task cards">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/board.webp" width="1500" height="690" loading="lazy" alt="Sprint board with columns and task cards">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">03</span>
+          <h3>Daily time entries</h3>
+          <p>Create a daily note with the toolbar button. A hotkey adds a line for the task, activity type and hours. Logging a day from the keyboard takes under a minute.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="../assets/img/daily.webp" data-lightbox-alt="A daily note in the Obsidian editor with time entries per task">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/daily.webp" width="1500" height="960" loading="lazy" alt="A daily note in the Obsidian editor with time entries per task">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">04</span>
+          <h3>Work by team member</h3>
+          <p>Avatars on the left filter the board by person; a right click opens their feed of entries across every sprint. Each card shows a spent-to-estimate fraction, turning red when over budget.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="../assets/img/feed.webp" data-lightbox-alt="Member feed: days from newest, hours, kind of work and links to tasks">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/feed.webp" width="760" height="850" loading="lazy" alt="Member feed: days from newest, hours, kind of work and links to tasks">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">05</span>
+          <h3>Reports for the retrospective</h3>
+          <p>Reports show estimate accuracy, hours by activity type, overloaded days and supporting work, alongside data from the two previous sprints.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="../assets/img/charts.webp" data-lightbox-alt="Report charts: time spent broken down by kind of work">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/charts.webp" width="1500" height="880" loading="lazy" alt="Report charts: time spent broken down by kind of work">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">06</span>
+          <h3>Sharing changes</h3>
+          <p>The command palette has <code>Git: Pull</code> and <code>Git: Commit-and-sync</code> pinned: the first brings in what the team changed, the second sends yours. Automatic backup is off, so changes leave your machine when you say so.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="../assets/img/palette.webp" data-lightbox-alt="Obsidian command palette with Git: Pull and Git: Commit-and-sync pinned at the top">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="../assets/img/palette.webp" width="1396" height="390" loading="lazy" alt="Obsidian command palette with Git: Pull and Git: Commit-and-sync pinned at the top">
+        </button>
+        
+      </article>
+      
+    </div>
+    <p class="workflow-footnote">Syncing is a single Obsidian Git command. Conflicts are rare: everyone writes into their own daily file.</p>
+  </div>
+</section>
+
+    <section class="section reveal" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">05 / FEATURES</p>
+      <h2 id="features-title">What is inside</h2>
+      <p>The template includes plugins and scripts. Two demo sprints with a fictional team show how the workflow fits together.</p>
+    </div>
+    <div class="feature-grid">
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Time tracking by kind of work</h3>
+        <p>Set the activity type in each entry: development, design, rituals or support</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Spent-to-estimate fraction</h3>
+        <p>On the card, in the feed and in reports, with over-budget highlighting</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Task history across sprints</h3>
+        <p>Task copies are linked across sprints, with time spent added together</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Time debt</h3>
+        <p>Unworked hours are recorded and cleared as they are made up</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Sprint reports</h3>
+        <p>Estimate accuracy, hours per person and per day, charts by kind of work</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Roadmap</h3>
+        <p>Visions, themes and epics linked to sprint tasks</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Gantt chart</h3>
+        <p>Dates change by dragging the bars right on the chart</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Avatar filter and member feed</h3>
+        <p>Click an avatar to filter the board; right-click to open the feed</p>
+      </article>
+      
+    </div>
+    <div class="feature-shots">
+      <button class="window screenshot-button" type="button" data-lightbox-src="../assets/img/roadmap.webp" data-lightbox-alt="Roadmap visualisation: visions, themes and epics as a hierarchy">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="../assets/img/roadmap.webp" width="1500" height="1000" loading="lazy" alt="Roadmap visualisation: visions, themes and epics as a hierarchy">
+      </button>
+      <button class="window screenshot-button" type="button" data-lightbox-src="../assets/img/timeline.webp" data-lightbox-alt="Gantt chart of roadmap themes and epics">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="../assets/img/timeline.webp" width="1500" height="600" loading="lazy" alt="Gantt chart of roadmap themes and epics">
+      </button>
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="limits" aria-labelledby="limits-title">
+  <div class="container limits-layout">
+    <div class="section-heading">
+      <p class="section-kicker">06 / LIMITS</p>
+      <h2 id="limits-title">Limitations</h2>
+      <p>A few limitations to consider when choosing the template.</p>
+    </div>
+    <ul class="limits-list">
+      
+      <li><span aria-hidden="true">—</span><p>Notifications and mentions are not supported.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>Repository access covers the entire sprint. More granular permissions are not available.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>The backlog covers the current sprint. Longer-term planning happens elsewhere.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>Board edits can cause merge conflicts. Frequent syncing makes them less likely.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>The template is built for a small team. Two hundred people need a corporate tracker.</p></li>
+      
+    </ul>
+  </div>
+</section>
+
+    <section class="section start-section reveal" id="start" aria-labelledby="start-title">
+  <div class="container start-card">
+    <div class="section-heading">
+      <p class="section-kicker">07 / START</p>
+      <h2 id="start-title">Try it</h2>
+      <p>Open your first board in five minutes, including the Obsidian installation.</p>
+    </div>
+    <div class="command" data-copy-wrap>
+      <code data-copy-value>git clone https://github.com/SemenKhmelev/agile-obsidian-template.git</code>
+      <button type="button" data-copy data-label="Copy" data-copied="Copied">Copy</button>
+      <span class="sr-only" aria-live="polite" data-copy-status></span>
+    </div>
+    <ol class="start-steps">
+      
+      <li>
+        <div>
+          <h3>Install Obsidian</h3>
+          <p>Free, on every platform.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Clone the repository</h3>
+          <p>Run the command above to download the template.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Open the folder as a vault</h3>
+          <p>When you open the vault, Obsidian asks you to trust its author. Confirm to use the plugins and settings included in the template.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Explore the demo and add your data</h3>
+          <p>The template ships with two demo sprints run by a fictional team. Switching to your own is described in CONTRIBUTING.</p>
+        </div>
+      </li>
+      
+    </ol>
+    <a class="button button-primary start-button" href="https://github.com/SemenKhmelev/agile-obsidian-template">Get the template<span aria-hidden="true"> ↗</span></a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#top">agile-obsidian</a>
+        <p>An Obsidian template for team sprints</p>
+      </div>
+      <nav class="footer-links" aria-label="An Obsidian template for team sprints">
+        <a href="https://github.com/SemenKhmelev/agile-obsidian-template#readme">Guide</a>
+        <a href="https://github.com/SemenKhmelev/agile-obsidian-template/blob/master/CONTRIBUTING.md">Maintenance</a>
+        <a href="https://habr.com/ru/articles/864466/">Article: from Trello to Obsidian (in Russian)</a>
+      </nav>
+      <p class="license">MIT © 2024 Semyon Khmelev</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox>
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Close">×</button>
+    <img data-lightbox-image alt="">
+  </dialog>
+</body>
+</html>

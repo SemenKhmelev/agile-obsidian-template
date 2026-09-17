@@ -1,0 +1,18 @@
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero-copy">
+    <p class="eyebrow">{{hero.eyebrow}}</p>
+    <h1 id="hero-title">{{hero.title}}</h1>
+    <p class="hero-lead">{{hero.lead}}</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{meta.repo_url}}">{{hero.cta_primary}}</a>
+      <a class="button button-secondary" href="#data">{{hero.cta_secondary}}</a>
+    </div>
+    <p class="hero-note">{{hero.note}}</p>
+  </div>
+  <div class="container hero-visual">
+    <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/board.webp" data-lightbox-alt="{{hero.shot_alt}}">
+      <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img src="{{site.asset_prefix}}img/board.webp" width="1500" height="690" alt="{{hero.shot_alt}}" fetchpriority="high">
+    </button>
+  </div>
+</section>

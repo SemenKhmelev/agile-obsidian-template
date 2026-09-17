@@ -1,0 +1,225 @@
+# English copy. Markup lives in _src/sections/*.html.
+# Wording changes belong here and nowhere else.
+
+[meta]
+lang = 'en'
+title = 'agile-obsidian — a sprint as a folder of files'
+description = 'An Obsidian template for team sprints: board, time tracking, reports and roadmap as plain markdown files in your own git repository. No server, no API.'
+alt_lang_href = '../'
+alt_lang_label = 'RU'
+alt_lang_full = 'Русский'
+repo_url = 'https://github.com/SemenKhmelev/agile-obsidian-template'
+skip_link = 'Skip to content'
+
+[nav]
+brand = 'agile-obsidian'
+github = 'GitHub'
+items = [
+  { href = '#data', label = 'Your data' },
+  { href = '#agents', label = 'AI agents' },
+  { href = '#workflow', label = 'Workflow' },
+  { href = '#features', label = 'Features' },
+  { href = '#start', label = 'Start' },
+]
+
+[hero]
+eyebrow = 'An Obsidian template for team sprints'
+title = 'A sprint is a folder of files'
+lead = 'Run team sprints in your own git repository. The board, time entries, reports and roadmap are stored as markdown files. No server, API or third-party cloud is needed.'
+cta_primary = 'Get the template'
+cta_secondary = 'See how it works'
+note = 'Used by a team of 12 across 159 sprints · MIT · all content in plain text'
+shot_alt = 'Sprint kanban board in Obsidian: task columns, member avatars in the left rail, cards showing a spent-to-estimate fraction'
+
+[data]
+title = 'Data in your repository'
+lead = 'A tracker holds team decisions, time spent and the reasons behind changes. In agile-obsidian, those records live in files with their revision history in git.'
+
+[[data.cards]]
+title = 'Records that outlasted the tool'
+text = 'Our time tracking extension stopped working when its browser technology became obsolete. The project also changed owners. The records remained intact as files.'
+
+[[data.cards]]
+title = 'A local copy for every teammate'
+text = 'Each teammate has a complete copy of the repository on disk. Access to those files does not depend on a service plan or account status.'
+
+[[data.cards]]
+title = 'Use your usual editor'
+text = 'Edit markdown with YAML headers in Obsidian, VS Code or vim. The same files can be searched with `grep` and read by Python scripts or AI agents.'
+
+[text]
+title = 'One line, three views'
+lead = 'Add a line to your daily note. The board and report read it from the same file and display the time spent on the task.'
+tab_markdown = 'Markdown'
+tab_board = 'Board'
+tab_report = 'Report'
+caption_markdown = 'Each daily note entry includes a task link, an activity type and hours spent.'
+caption_board = 'The same task on the board. The spent-to-estimate fraction sits on the card and turns red when the estimate is passed, as on the neighbouring card in review.'
+caption_report = 'The sprint report gathers estimates, actuals and accuracy from the entries.'
+board_alt = 'A fragment of the sprint board: the review and done columns, with the highlighted card that shows a 39/55 fraction'
+report_alt = 'Sprint task report: a table with estimates, time spent and task states'
+
+[agents]
+title = 'How an AI agent works with tasks'
+lead = 'An AI agent reads tasks and time entries directly from the repository. It edits the same markdown files the team uses.'
+terminal_caption = 'An agent working with tracker files'
+left_title = 'Accessing a service through its API'
+left_items = [
+  'Register an OAuth app and store its secret',
+  'Learn the data schema and API versions',
+  'Account for rate limits when fetching data',
+  'Set up an MCP server or write code to call the API',
+  'Assemble project context from query responses',
+  'Review agent changes in the service interface',
+]
+right_title = 'A folder of files'
+right_items = [
+  'Open the repository directory with `cd`',
+  'Search entries across sprints with `grep`',
+  'Edit lines in the task file',
+  'Pass task history across sprints to the model as context',
+  'Review agent changes with `git diff`',
+  'Undo agent commits with `git revert`',
+]
+
+[[agents.points]]
+title = 'Search entries'
+text = 'The command `grep -r "action:: dev" sprint2/comments` finds development entries in the sprint.'
+
+[[agents.points]]
+title = 'Log time'
+text = 'The agent adds `[spent:: 2]` to a daily note entry, using the same format as a manual entry.'
+
+[[agents.points]]
+title = 'Task history'
+text = 'The `previous` field links copies of a task across sprints. These links let you gather its history for the model.'
+
+[[agents.points]]
+title = 'Review changes'
+text = 'Changed lines appear in `git diff`. Once edits are committed, you can undo the commit with `git revert`.'
+
+[workflow]
+title = 'The sprint cycle'
+lead = 'The team follows six steps every two weeks. A script prepares the new sprint, members update tasks and log time, and reports gather the data for the retrospective.'
+footnote = 'Syncing is a single Obsidian Git command. Conflicts are rare: everyone writes into their own daily file.'
+
+[[workflow.steps]]
+num = '01'
+title = 'Create a new sprint'
+text = 'The `create_new_sprint.py` script copies the previous sprint structure, removes completed work, carries over unfinished tasks, links them to previous versions and points plugin settings to the new folder.'
+shot = ''
+shot_alt = ''
+
+[[workflow.steps]]
+num = '02'
+title = 'Sprint tasks and board'
+text = 'Each task file contains an estimate, a checklist of stages and a link to the previous sprint. The Kanban plugin edits the board in `board.md`. Git stores the file, so the team shares the same column layout.'
+shot = 'board.webp'
+shot_alt = 'Sprint board with columns and task cards'
+
+[[workflow.steps]]
+num = '03'
+title = 'Daily time entries'
+text = 'Create a daily note with the toolbar button. A hotkey adds a line for the task, activity type and hours. Logging a day from the keyboard takes under a minute.'
+shot = 'daily.webp'
+shot_alt = 'A daily note in the Obsidian editor with time entries per task'
+
+[[workflow.steps]]
+num = '04'
+title = 'Work by team member'
+text = 'Avatars on the left filter the board by person; a right click opens their feed of entries across every sprint. Each card shows a spent-to-estimate fraction, turning red when over budget.'
+shot = 'feed.webp'
+shot_alt = 'Member feed: days from newest, hours, kind of work and links to tasks'
+
+[[workflow.steps]]
+num = '05'
+title = 'Reports for the retrospective'
+text = 'Reports show estimate accuracy, hours by activity type, overloaded days and supporting work, alongside data from the two previous sprints.'
+shot = 'charts.webp'
+shot_alt = 'Report charts: time spent broken down by kind of work'
+
+[[workflow.steps]]
+num = '06'
+title = 'Sharing changes'
+text = 'The command palette has `Git: Pull` and `Git: Commit-and-sync` pinned: the first brings in what the team changed, the second sends yours. Automatic backup is off, so changes leave your machine when you say so.'
+shot = 'palette.webp'
+shot_alt = 'Obsidian command palette with Git: Pull and Git: Commit-and-sync pinned at the top'
+
+[features]
+title = 'What is inside'
+lead = 'The template includes plugins and scripts. Two demo sprints with a fictional team show how the workflow fits together.'
+roadmap_alt = 'Roadmap visualisation: visions, themes and epics as a hierarchy'
+timeline_alt = 'Gantt chart of roadmap themes and epics'
+
+[[features.items]]
+title = 'Time tracking by kind of work'
+text = 'Set the activity type in each entry: development, design, rituals or support'
+
+[[features.items]]
+title = 'Spent-to-estimate fraction'
+text = 'On the card, in the feed and in reports, with over-budget highlighting'
+
+[[features.items]]
+title = 'Task history across sprints'
+text = 'Task copies are linked across sprints, with time spent added together'
+
+[[features.items]]
+title = 'Time debt'
+text = 'Unworked hours are recorded and cleared as they are made up'
+
+[[features.items]]
+title = 'Sprint reports'
+text = 'Estimate accuracy, hours per person and per day, charts by kind of work'
+
+[[features.items]]
+title = 'Roadmap'
+text = 'Visions, themes and epics linked to sprint tasks'
+
+[[features.items]]
+title = 'Gantt chart'
+text = 'Dates change by dragging the bars right on the chart'
+
+[[features.items]]
+title = 'Avatar filter and member feed'
+text = 'Click an avatar to filter the board; right-click to open the feed'
+
+[limits]
+title = 'Limitations'
+lead = 'A few limitations to consider when choosing the template.'
+items = [
+  'Notifications and mentions are not supported.',
+  'Repository access covers the entire sprint. More granular permissions are not available.',
+  'The backlog covers the current sprint. Longer-term planning happens elsewhere.',
+  'Board edits can cause merge conflicts. Frequent syncing makes them less likely.',
+  'The template is built for a small team. Two hundred people need a corporate tracker.',
+]
+
+[start]
+title = 'Try it'
+lead = 'Open your first board in five minutes, including the Obsidian installation.'
+command = 'git clone https://github.com/SemenKhmelev/agile-obsidian-template.git'
+copy = 'Copy'
+copied = 'Copied'
+
+[[start.steps]]
+title = 'Install Obsidian'
+text = 'Free, on every platform.'
+
+[[start.steps]]
+title = 'Clone the repository'
+text = 'Run the command above to download the template.'
+
+[[start.steps]]
+title = 'Open the folder as a vault'
+text = 'When you open the vault, Obsidian asks you to trust its author. Confirm to use the plugins and settings included in the template.'
+
+[[start.steps]]
+title = 'Explore the demo and add your data'
+text = 'The template ships with two demo sprints run by a fictional team. Switching to your own is described in CONTRIBUTING.'
+
+[footer]
+tagline = 'An Obsidian template for team sprints'
+readme = 'Guide'
+contributing = 'Maintenance'
+article = 'Article: from Trello to Obsidian (in Russian)'
+license = 'MIT © 2024 Semyon Khmelev'

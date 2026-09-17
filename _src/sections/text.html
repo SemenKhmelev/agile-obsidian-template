@@ -1,0 +1,36 @@
+<section class="section reveal" id="text" aria-labelledby="text-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">02 / MARKDOWN</p>
+      <h2 id="text-title">{{text.title}}</h2>
+      <p>{{text.lead}}</p>
+    </div>
+    <div class="triptych" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="{{text.title}}">
+        <button id="tab-markdown" type="button" role="tab" aria-selected="true" aria-controls="panel-markdown">{{text.tab_markdown}}</button>
+        <button id="tab-board" type="button" role="tab" aria-selected="false" aria-controls="panel-board" tabindex="-1">{{text.tab_board}}</button>
+        <button id="tab-report" type="button" role="tab" aria-selected="false" aria-controls="panel-report" tabindex="-1">{{text.tab_report}}</button>
+      </div>
+      <div class="tab-panel" id="panel-markdown" role="tabpanel" aria-labelledby="tab-markdown">
+        <div class="code-sample" tabindex="0"><pre><code><span class="md-bullet">*</span> <span class="md-property">[cardref::</span> <span class="md-link">[[sprint2/tasks/Ошибка на открытии bpmn-фрейма|Ошибка на открытии bpmn-фрейма]]</span><span class="md-property">]</span>
+  <span class="md-property">[action::</span> <span class="md-value">fix</span><span class="md-property">]</span> <span class="md-property">[spent::</span> <span class="md-number">5</span><span class="md-property">]</span>
+  Удалось повторить ошибку.</code></pre></div>
+        <p class="caption">{{text.caption_markdown}}</p>
+      </div>
+      <div class="tab-panel" id="panel-board" role="tabpanel" aria-labelledby="tab-board">
+        <button class="window screenshot-button compact-shot" type="button" data-lightbox-src="{{site.asset_prefix}}img/card.webp" data-lightbox-alt="{{text.board_alt}}">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="{{site.asset_prefix}}img/card.webp" width="1680" height="876" loading="lazy" alt="{{text.board_alt}}">
+        </button>
+        <p class="caption">{{text.caption_board}}</p>
+      </div>
+      <div class="tab-panel" id="panel-report" role="tabpanel" aria-labelledby="tab-report">
+        <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/report.webp" data-lightbox-alt="{{text.report_alt}}">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="{{site.asset_prefix}}img/report.webp" width="1500" height="1000" loading="lazy" alt="{{text.report_alt}}">
+        </button>
+        <p class="caption">{{text.caption_report}}</p>
+      </div>
+    </div>
+  </div>
+</section>

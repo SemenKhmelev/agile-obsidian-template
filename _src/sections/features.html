@@ -1,0 +1,28 @@
+<section class="section reveal" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">05 / FEATURES</p>
+      <h2 id="features-title">{{features.title}}</h2>
+      <p>{{features.lead}}</p>
+    </div>
+    <div class="feature-grid">
+      <!-- BEGIN loop:features.items -->
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </article>
+      <!-- END loop:features.items -->
+    </div>
+    <div class="feature-shots">
+      <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/roadmap.webp" data-lightbox-alt="{{features.roadmap_alt}}">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="{{site.asset_prefix}}img/roadmap.webp" width="1500" height="1000" loading="lazy" alt="{{features.roadmap_alt}}">
+      </button>
+      <button class="window screenshot-button" type="button" data-lightbox-src="{{site.asset_prefix}}img/timeline.webp" data-lightbox-alt="{{features.timeline_alt}}">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="{{site.asset_prefix}}img/timeline.webp" width="1500" height="600" loading="lazy" alt="{{features.timeline_alt}}">
+      </button>
+    </div>
+  </div>
+</section>

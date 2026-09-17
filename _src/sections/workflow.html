@@ -1,0 +1,27 @@
+<section class="section reveal" id="workflow" aria-labelledby="workflow-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">04 / WORKFLOW</p>
+      <h2 id="workflow-title">{{workflow.title}}</h2>
+      <p>{{workflow.lead}}</p>
+    </div>
+    <div class="workflow-list">
+      <!-- BEGIN loop:workflow.steps -->
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">{{item.num}}</span>
+          <h3>{{item.title}}</h3>
+          <p>{{item.text}}</p>
+        </div>
+        <!-- BEGIN if:item.shot -->
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="{{site.asset_prefix}}img/{{item.shot}}" data-lightbox-alt="{{item.shot_alt}}">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="{{site.asset_prefix}}img/{{item.shot}}" width="{{item.shot_width}}" height="{{item.shot_height}}" loading="lazy" alt="{{item.shot_alt}}">
+        </button>
+        <!-- END if:item.shot -->
+      </article>
+      <!-- END loop:workflow.steps -->
+    </div>
+    <p class="workflow-footnote">{{workflow.footnote}}</p>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+<section class="section reveal" id="data" aria-labelledby="data-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">01 / DATA</p>
+      <h2 id="data-title">{{data.title}}</h2>
+      <p>{{data.lead}}</p>
+    </div>
+    <div class="cards data-cards">
+      <!-- BEGIN loop:data.cards -->
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </article>
+      <!-- END loop:data.cards -->
+    </div>
+  </div>
+</section>

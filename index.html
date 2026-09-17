@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0f0d15">
+  <title>agile-obsidian — спринт как папка с файлами</title>
+  <meta name="description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <link rel="canonical" href="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <link rel="alternate" hreflang="ru" href="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <link rel="alternate" hreflang="en" href="https://semenkhmelev.github.io/agile-obsidian-template/en/">
+  <link rel="alternate" hreflang="x-default" href="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="agile-obsidian">
+  <meta property="og:title" content="agile-obsidian — спринт как папка с файлами">
+  <meta property="og:description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <meta property="og:url" content="https://semenkhmelev.github.io/agile-obsidian-template/">
+  <meta property="og:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
+  <meta property="og:locale" content="ru">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="agile-obsidian — спринт как папка с файлами">
+  <meta name="twitter:description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <meta name="twitter:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="agile-obsidian">agile-obsidian</a>
+      <nav class="site-nav" aria-label="agile-obsidian">
+        
+        <a href="#data">Данные</a>
+        
+        <a href="#agents">Агенты</a>
+        
+        <a href="#workflow">Воркфлоу</a>
+        
+        <a href="#features">Возможности</a>
+        
+        <a href="#start">Начать</a>
+        
+      </nav>
+      <div class="nav-actions">
+        <a class="language" href="en/" lang="en" hreflang="en" aria-label="English">EN</a>
+        <a class="button button-small" href="https://github.com/SemenKhmelev/agile-obsidian-template">GitHub<span aria-hidden="true"> ↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero-copy">
+    <p class="eyebrow">Шаблон Obsidian для командных спринтов</p>
+    <h1 id="hero-title">Спринт — это папка с файлами</h1>
+    <p class="hero-lead">Команда ведёт спринты в своём git-репозитории. Доска, учёт времени, отчёты и роадмап хранятся в markdown-файлах. Для работы не нужны сервер, API или стороннее облако.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="https://github.com/SemenKhmelev/agile-obsidian-template">Забрать шаблон</a>
+      <a class="button button-secondary" href="#data">Как это устроено</a>
+    </div>
+    <p class="hero-note">159 спринтов в команде из 12 человек · MIT · всё содержимое в обычном тексте</p>
+  </div>
+  <div class="container hero-visual">
+    <button class="window screenshot-button" type="button" data-lightbox-src="assets/img/board.webp" data-lightbox-alt="Kanban-доска спринта в Obsidian: колонки задач, панель аватарок участников слева, на карточках дробь «потрачено / оценка»">
+      <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+      <img src="assets/img/board.webp" width="1500" height="690" alt="Kanban-доска спринта в Obsidian: колонки задач, панель аватарок участников слева, на карточках дробь «потрачено / оценка»" fetchpriority="high">
+    </button>
+  </div>
+</section>
+
+    <section class="section reveal" id="data" aria-labelledby="data-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">01 / DATA</p>
+      <h2 id="data-title">Данные в вашем репозитории</h2>
+      <p>В трекере остаются решения команды, затраченное время и причины изменений. В agile-obsidian эти записи хранятся в файлах, вместе с историей изменений в git.</p>
+    </div>
+    <div class="cards data-cards">
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Записи пережили смену инструмента</h3>
+        <p>Наше расширение для учёта времени перестало работать с устареванием браузерной технологии. Сам проект сменил владельца. Записи сохранились в файлах.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>У каждого есть локальная копия</h3>
+        <p>Полная копия репозитория лежит на диске у каждого участника команды. Доступ к этим файлам не зависит от тарифа сервиса или статуса аккаунта.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Открывайте в привычном редакторе</h3>
+        <p>Markdown с YAML-заголовком можно редактировать в Obsidian, VS Code или vim. Те же файлы доступны для поиска через <code>grep</code>, скриптов на Python и AI-агентов.</p>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="text" aria-labelledby="text-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">02 / MARKDOWN</p>
+      <h2 id="text-title">Одна строка — три представления</h2>
+      <p>Добавьте строку в запись за день. Доска и отчёт прочитают её из того же файла и покажут потраченное время по задаче.</p>
+    </div>
+    <div class="triptych" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Одна строка — три представления">
+        <button id="tab-markdown" type="button" role="tab" aria-selected="true" aria-controls="panel-markdown">Markdown</button>
+        <button id="tab-board" type="button" role="tab" aria-selected="false" aria-controls="panel-board" tabindex="-1">Доска</button>
+        <button id="tab-report" type="button" role="tab" aria-selected="false" aria-controls="panel-report" tabindex="-1">Отчёт</button>
+      </div>
+      <div class="tab-panel" id="panel-markdown" role="tabpanel" aria-labelledby="tab-markdown">
+        <div class="code-sample" tabindex="0"><pre><code><span class="md-bullet">*</span> <span class="md-property">[cardref::</span> <span class="md-link">[[sprint2/tasks/Ошибка на открытии bpmn-фрейма|Ошибка на открытии bpmn-фрейма]]</span><span class="md-property">]</span>
+  <span class="md-property">[action::</span> <span class="md-value">fix</span><span class="md-property">]</span> <span class="md-property">[spent::</span> <span class="md-number">5</span><span class="md-property">]</span>
+  Удалось повторить ошибку.</code></pre></div>
+        <p class="caption">В строке записи за день указываются ссылка на задачу, тип деятельности и часы.</p>
+      </div>
+      <div class="tab-panel" id="panel-board" role="tabpanel" aria-labelledby="tab-board">
+        <button class="window screenshot-button compact-shot" type="button" data-lightbox-src="assets/img/card.webp" data-lightbox-alt="Фрагмент доски спринта: колонки review и done, подсвечена карточка «Ошибка на открытии bpmn-фрейма» с дробью 39/55">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/card.webp" width="1680" height="876" loading="lazy" alt="Фрагмент доски спринта: колонки review и done, подсвечена карточка «Ошибка на открытии bpmn-фрейма» с дробью 39/55">
+        </button>
+        <p class="caption">Та же задача на доске. Дробь «потрачено / оценка» стоит на карточке, при перерасходе она краснеет — как у соседней задачи в review.</p>
+      </div>
+      <div class="tab-panel" id="panel-report" role="tabpanel" aria-labelledby="tab-report">
+        <button class="window screenshot-button" type="button" data-lightbox-src="assets/img/report.webp" data-lightbox-alt="Отчёт по задачам спринта: таблица с оценкой, потраченным временем и состоянием задач">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/report.webp" width="1500" height="1000" loading="lazy" alt="Отчёт по задачам спринта: таблица с оценкой, потраченным временем и состоянием задач">
+        </button>
+        <p class="caption">Отчёт спринта собирает оценку, факт и точность из записей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="agents" aria-labelledby="agents-title">
+  <div class="container">
+    <div class="section-heading wide-heading">
+      <p class="section-kicker">03 / AI AGENTS</p>
+      <h2 id="agents-title">Как AI-агент работает с задачами</h2>
+      <p>AI-агент читает задачи и записи о времени прямо из репозитория. Правки вносит в те же markdown-файлы, с которыми работает команда.</p>
+    </div>
+    <div class="agent-compare">
+      <article class="compare-panel compare-closed">
+        <p class="compare-label"><span aria-hidden="true">×</span> API</p>
+        <h3>Доступ к сервису через API</h3>
+        <ul>
+          
+          <li>Зарегистрировать OAuth-приложение и хранить его секрет</li>
+          
+          <li>Разобраться в схеме данных и версиях API</li>
+          
+          <li>Учитывать лимиты запросов при выборке данных</li>
+          
+          <li>Настроить MCP-сервер или написать код для обращения к API</li>
+          
+          <li>Собирать контекст проекта из ответов на запросы</li>
+          
+          <li>Проверять изменения агента в интерфейсе сервиса</li>
+          
+        </ul>
+      </article>
+      <article class="compare-panel compare-files">
+        <p class="compare-label"><span aria-hidden="true">✓</span> FILES</p>
+        <h3>Папка с файлами</h3>
+        <ul>
+          
+          <li>Перейти в каталог репозитория через <code>cd</code></li>
+          
+          <li>Искать записи по всем спринтам через <code>grep</code></li>
+          
+          <li>Редактировать строки в файле задачи</li>
+          
+          <li>Передать историю задачи по спринтам в контекст модели</li>
+          
+          <li>Проверять правки агента через <code>git diff</code></li>
+          
+          <li>Отменять коммиты агента командой <code>git revert</code></li>
+          
+        </ul>
+      </article>
+    </div>
+    <div class="agent-points">
+      
+      <article>
+        <h3>Поиск по записям</h3>
+        <p>Команда <code>grep -r &quot;action:: dev&quot; sprint2/comments</code> находит записи о разработке в спринте.</p>
+      </article>
+      
+      <article>
+        <h3>Запись времени</h3>
+        <p>Агент добавляет <code>[spent:: 2]</code> в строку записи за день. Формат тот же, что при ручном вводе.</p>
+      </article>
+      
+      <article>
+        <h3>История задачи</h3>
+        <p>Поле <code>previous</code> связывает копии задачи в разных спринтах. По этим ссылкам можно собрать её историю для модели.</p>
+      </article>
+      
+      <article>
+        <h3>Проверка изменений</h3>
+        <p>В <code>git diff</code> видны изменённые строки. Если правки уже закоммичены, отменить коммит можно через <code>git revert</code>.</p>
+      </article>
+      
+    </div>
+    <figure class="terminal">
+      <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>agent — sprint2</span></div>
+      <pre><code><span class="prompt">$</span> grep -R -n "action:: fix" sprint2/comments
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md:18:</span>
+  [action:: fix] [spent:: 5] Удалось повторить ошибку.
+
+<span class="prompt">$</span> git diff --stat
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md | 2 +-</span>
+ 1 file changed, 1 insertion(+), 1 deletion(-)<span class="cursor" aria-hidden="true"></span></code></pre>
+      <figcaption>Работа агента с файлами трекера</figcaption>
+    </figure>
+  </div>
+</section>
+
+    <section class="section reveal" id="workflow" aria-labelledby="workflow-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">04 / WORKFLOW</p>
+      <h2 id="workflow-title">Цикл спринта</h2>
+      <p>Каждые две недели команда проходит шесть шагов. Скрипт готовит новый спринт, участники ведут задачи и записи о времени, а отчёты собирают данные к ретро.</p>
+    </div>
+    <div class="workflow-list">
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">01</span>
+          <h3>Создайте новый спринт</h3>
+          <p>Скрипт <code>create_new_sprint.py</code> копирует структуру прошлого спринта, убирает завершённое, переносит хвосты, проставляет ссылки на предыдущие версии задач и переключает настройки плагинов на новый каталог.</p>
+        </div>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">02</span>
+          <h3>Задачи и доска спринта</h3>
+          <p>В файле задачи указаны оценка, чеклист этапов и ссылка на прошлый спринт. Kanban-плагин редактирует доску в файле <code>board.md</code>. Он хранится в git, поэтому расположение колонок общее для команды.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="assets/img/board.webp" data-lightbox-alt="Доска спринта с колонками и карточками задач">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/board.webp" width="1500" height="690" loading="lazy" alt="Доска спринта с колонками и карточками задач">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">03</span>
+          <h3>Учёт времени за день</h3>
+          <p>Создайте файл дня кнопкой на панели. Горячая клавиша добавит строку для задачи, типа деятельности и часов. Ввод с клавиатуры занимает меньше минуты за день.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="assets/img/daily.webp" data-lightbox-alt="Запись за день в редакторе Obsidian: строки учёта времени по задачам">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/daily.webp" width="1500" height="960" loading="lazy" alt="Запись за день в редакторе Obsidian: строки учёта времени по задачам">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">04</span>
+          <h3>Работа участников</h3>
+          <p>Аватарки слева фильтруют доску по человеку, правый клик открывает сквозную ленту его записей за все спринты. На карточке — дробь «потрачено / оценка», красная при перерасходе.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="assets/img/feed.webp" data-lightbox-alt="Лента записей участника: дни сверху вниз, часы, тип деятельности и ссылки на задачи">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/feed.webp" width="760" height="850" loading="lazy" alt="Лента записей участника: дни сверху вниз, часы, тип деятельности и ссылки на задачи">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">05</span>
+          <h3>Отчёты для ретро</h3>
+          <p>Отчёты показывают точность оценок, распределение часов по типам деятельности, перегрузки по дням и сопутствующую деятельность рядом с двумя прошлыми спринтами.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="assets/img/charts.webp" data-lightbox-alt="Графики отчёта: распределение потраченного времени по типам деятельности">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/charts.webp" width="1500" height="880" loading="lazy" alt="Графики отчёта: распределение потраченного времени по типам деятельности">
+        </button>
+        
+      </article>
+      
+      <article class="workflow-step">
+        <div class="step-copy">
+          <span class="step-number">06</span>
+          <h3>Обмен изменениями</h3>
+          <p>В палитре команд закреплены <code>Git: Pull</code> и <code>Git: Commit-and-sync</code>: первая забирает правки команды, вторая отправляет ваши. Автоматический бэкап выключен, изменения уходят на сервер по вашей команде.</p>
+        </div>
+        
+        <button class="window screenshot-button step-shot" type="button" data-lightbox-src="assets/img/palette.webp" data-lightbox-alt="Палитра команд Obsidian: сверху закреплены команды Git: Pull и Git: Commit-and-sync">
+          <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img src="assets/img/palette.webp" width="1396" height="390" loading="lazy" alt="Палитра команд Obsidian: сверху закреплены команды Git: Pull и Git: Commit-and-sync">
+        </button>
+        
+      </article>
+      
+    </div>
+    <p class="workflow-footnote">Каждый ведёт свой файл дня, поэтому конфликты при слиянии редки.</p>
+  </div>
+</section>
+
+    <section class="section reveal" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">05 / FEATURES</p>
+      <h2 id="features-title">Что внутри</h2>
+      <p>В шаблон включены плагины и скрипты. Два демо-спринта вымышленной команды показывают, как устроена работа.</p>
+    </div>
+    <div class="feature-grid">
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Учёт времени по типам деятельности</h3>
+        <p>Тип деятельности задаётся в строке: разработка, дизайн, ритуалы или поддержка</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Дробь «потрачено / оценка»</h3>
+        <p>На карточке, в ленте и в отчётах, с подсветкой перерасхода</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Сквозная история задачи</h3>
+        <p>Копии задачи связаны между спринтами; потраченное время суммируется</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Временной долг</h3>
+        <p>Недоработанные часы фиксируются и закрываются отработкой</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Отчёты спринта</h3>
+        <p>Точность оценок, часы по людям и дням, графики по типам деятельности</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Roadmap</h3>
+        <p>Видения, темы и эпики, связанные со спринтовыми задачами</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Диаграмма Ганта</h3>
+        <p>Сроки меняются перетаскиванием полос прямо на диаграмме</p>
+      </article>
+      
+      <article class="feature-card">
+        <span aria-hidden="true">+</span>
+        <h3>Фильтр по аватаркам и лента участника</h3>
+        <p>Доска фильтруется кликом, лента открывается правым кликом</p>
+      </article>
+      
+    </div>
+    <div class="feature-shots">
+      <button class="window screenshot-button" type="button" data-lightbox-src="assets/img/roadmap.webp" data-lightbox-alt="Визуализация роадмапа: видения, темы и эпики в виде иерархии">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="assets/img/roadmap.webp" width="1500" height="1000" loading="lazy" alt="Визуализация роадмапа: видения, темы и эпики в виде иерархии">
+      </button>
+      <button class="window screenshot-button" type="button" data-lightbox-src="assets/img/timeline.webp" data-lightbox-alt="Диаграмма Ганта по темам и эпикам роадмапа">
+        <span class="window-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="assets/img/timeline.webp" width="1500" height="600" loading="lazy" alt="Диаграмма Ганта по темам и эпикам роадмапа">
+      </button>
+    </div>
+  </div>
+</section>
+
+    <section class="section reveal" id="limits" aria-labelledby="limits-title">
+  <div class="container limits-layout">
+    <div class="section-heading">
+      <p class="section-kicker">06 / LIMITS</p>
+      <h2 id="limits-title">Ограничения</h2>
+      <p>При выборе шаблона стоит учесть несколько ограничений.</p>
+    </div>
+    <ul class="limits-list">
+      
+      <li><span aria-hidden="true">—</span><p>Уведомления и упоминания не поддерживаются.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>Доступ к репозиторию открывает весь спринт. Настроить права точнее нельзя.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>Бэклог ограничен текущим спринтом. Дальнейшее планирование ведётся отдельно.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>На доске возможны мердж-конфликты. Частый обмен изменениями снижает их вероятность.</p></li>
+      
+      <li><span aria-hidden="true">—</span><p>Шаблон рассчитан на небольшую команду. Для двухсот человек нужен корпоративный трекер.</p></li>
+      
+    </ul>
+  </div>
+</section>
+
+    <section class="section start-section reveal" id="start" aria-labelledby="start-title">
+  <div class="container start-card">
+    <div class="section-heading">
+      <p class="section-kicker">07 / START</p>
+      <h2 id="start-title">Попробовать</h2>
+      <p>Открыть первую доску можно за пять минут, включая установку Obsidian.</p>
+    </div>
+    <div class="command" data-copy-wrap>
+      <code data-copy-value>git clone https://github.com/SemenKhmelev/agile-obsidian-template.git</code>
+      <button type="button" data-copy data-label="Скопировать" data-copied="Скопировано">Скопировать</button>
+      <span class="sr-only" aria-live="polite" data-copy-status></span>
+    </div>
+    <ol class="start-steps">
+      
+      <li>
+        <div>
+          <h3>Установить Obsidian</h3>
+          <p>Бесплатно, на всех платформах.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Клонировать репозиторий</h3>
+          <p>Выполните команду выше, чтобы скачать шаблон.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Открыть папку как хранилище</h3>
+          <p>При открытии Obsidian попросит подтвердить доверие автору хранилища. Подтвердите, чтобы использовать включённые в шаблон плагины и настройки.</p>
+        </div>
+      </li>
+      
+      <li>
+        <div>
+          <h3>Посмотреть демо и добавить свои данные</h3>
+          <p>В шаблоне два демо-спринта с вымышленной командой. Как перейти на свою — в CONTRIBUTING.</p>
+        </div>
+      </li>
+      
+    </ol>
+    <a class="button button-primary start-button" href="https://github.com/SemenKhmelev/agile-obsidian-template">Забрать шаблон<span aria-hidden="true"> ↗</span></a>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand" href="#top">agile-obsidian</a>
+        <p>Шаблон Obsidian для командных спринтов</p>
+      </div>
+      <nav class="footer-links" aria-label="Шаблон Obsidian для командных спринтов">
+        <a href="https://github.com/SemenKhmelev/agile-obsidian-template#readme">Руководство</a>
+        <a href="https://github.com/SemenKhmelev/agile-obsidian-template/blob/master/CONTRIBUTING.md">Сопровождение</a>
+        <a href="https://habr.com/ru/articles/864466/">Статья «От Trello к Obsidian»</a>
+      </nav>
+      <p class="license">MIT © 2024 Semyon Khmelev</p>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" data-lightbox>
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="Закрыть">×</button>
+    <img data-lightbox-image alt="">
+  </dialog>
+</body>
+</html>

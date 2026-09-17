@@ -1,0 +1,48 @@
+<section class="section reveal" id="agents" aria-labelledby="agents-title">
+  <div class="container">
+    <div class="section-heading wide-heading">
+      <p class="section-kicker">03 / AI AGENTS</p>
+      <h2 id="agents-title">{{agents.title}}</h2>
+      <p>{{agents.lead}}</p>
+    </div>
+    <div class="agent-compare">
+      <article class="compare-panel compare-closed">
+        <p class="compare-label"><span aria-hidden="true">×</span> API</p>
+        <h3>{{agents.left_title}}</h3>
+        <ul>
+          <!-- BEGIN loop:agents.left_items -->
+          <li>{{item}}</li>
+          <!-- END loop:agents.left_items -->
+        </ul>
+      </article>
+      <article class="compare-panel compare-files">
+        <p class="compare-label"><span aria-hidden="true">✓</span> FILES</p>
+        <h3>{{agents.right_title}}</h3>
+        <ul>
+          <!-- BEGIN loop:agents.right_items -->
+          <li>{{item}}</li>
+          <!-- END loop:agents.right_items -->
+        </ul>
+      </article>
+    </div>
+    <div class="agent-points">
+      <!-- BEGIN loop:agents.points -->
+      <article>
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </article>
+      <!-- END loop:agents.points -->
+    </div>
+    <figure class="terminal">
+      <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>agent — sprint2</span></div>
+      <pre><code><span class="prompt">$</span> grep -R -n "action:: fix" sprint2/comments
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md:18:</span>
+  [action:: fix] [spent:: 5] Удалось повторить ошибку.
+
+<span class="prompt">$</span> git diff --stat
+<span class="result">sprint2/comments/2024-01-25-Галена Селезнева.md | 2 +-</span>
+ 1 file changed, 1 insertion(+), 1 deletion(-)<span class="cursor" aria-hidden="true"></span></code></pre>
+      <figcaption>{{agents.terminal_caption}}</figcaption>
+    </figure>
+  </div>
+</section>
