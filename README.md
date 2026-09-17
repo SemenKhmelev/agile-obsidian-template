@@ -1,5 +1,7 @@
 # О проекте
 
+Сайт проекта: **https://semenkhmelev.github.io/agile-obsidian-template/**
+
 В проекте agile-obsidian представлен шаблон для [Obsidian](https://obsidian.md/), с помощью которого команды могут вести разработку по спринтовой схеме, близкой к Scrum.
 
 ## О текущем репозитории и зрелости шаблона
@@ -215,5 +217,7 @@ python3 -B _scripts/create_new_sprint.py
 - Инструкции для AI-агентов и правила изменения кода vault — [AGENTS.md](AGENTS.md).
 - Сопровождение (участники, аватарки, переход с демо) — [CONTRIBUTING.md](CONTRIBUTING.md).
 - Тесты: `node --test _tests/*.test.js`.
+- Скиллы для AI-агентов — [`.agents/skills`](.agents/skills): занесение времени за день
+  и запуск настоящего Obsidian для проверки правок.
 
 Для TODO по agile-obsidian см. [board](_selfBoard/board.md)
