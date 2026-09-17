@@ -247,11 +247,11 @@ text = 'When you open the vault, Obsidian asks you to trust its author. Confirm 
 
 [[start.steps]]
 title = 'Explore the demo and add your data'
-text = 'The template ships with two demo sprints run by a fictional team. Switching to your own is described in CONTRIBUTING.'
+text = 'The template ships with two demo sprints run by a fictional team. Switching to your own is described in the Maintenance section of the guide.'
 
 [footer]
 tagline = 'An Obsidian template for team sprints'
 readme = 'Guide'
-contributing = 'Maintenance'
+maintenance = 'Maintenance'
 article = 'Article: from Trello to Obsidian (in Russian)'
 license = 'MIT © 2024 Semyon Khmelev'
