@@ -4,7 +4,7 @@
 [meta]
 lang = 'en'
 title = 'agile-obsidian — a sprint as a folder of files'
-description = 'An Obsidian template for team sprints: board, time tracking, reports and roadmap as plain markdown files in your own git repository. No server, no API.'
+description = 'An Obsidian vault for team sprints: configured plugins, our own scripts, templates and reports, a working process. Board, time tracking and roadmap as markdown files in your own git repository.'
 alt_lang_href = '../'
 alt_lang_label = 'RU'
 alt_lang_full = 'Русский'
@@ -15,6 +15,7 @@ skip_link = 'Skip to content'
 brand = 'agile-obsidian'
 github = 'GitHub'
 items = [
+  { href = '#stack', label = 'What it is' },
   { href = '#data', label = 'Your data' },
   { href = '#agents', label = 'AI agents' },
   { href = '#workflow', label = 'Workflow' },
@@ -25,11 +26,31 @@ items = [
 [hero]
 eyebrow = 'An Obsidian template for team sprints'
 title = 'A sprint is a folder of files'
-lead = 'Run team sprints in your own git repository. The board, time entries, reports and roadmap are stored as markdown files. No server, API or third-party cloud is needed.'
+lead = 'An Obsidian vault put together for sprint-based development: configured plugins, our own scripts and templates, a process that works. Board, time tracking, reports and roadmap live as markdown files in your own git repository.'
 cta_primary = 'Get the template'
 cta_secondary = 'See how it works'
 note = 'Used by a team of 12 across 159 sprints · MIT · all content in plain text'
 shot_alt = 'Sprint kanban board in Obsidian: task columns, member avatars in the left rail, cards showing a spent-to-estimate fraction'
+
+[stack]
+title = 'What you actually get'
+lead = 'Clone the repository, open it in Obsidian, and everything a team needs for sprint work is already there: configured plugins, our scripts and templates, a demo example and the process itself.'
+
+[[stack.cards]]
+title = 'Obsidian as the workplace'
+text = 'Local markdown files, instant search across every sprint, keyboard shortcuts, link previews and a command palette. The editor is free and runs on every platform.'
+
+[[stack.cards]]
+title = 'Plugins, already configured'
+text = 'Kanban, Dataview, Templater, Charts, QuickAdd and Obsidian Git ship inside the repository together with their settings. Nothing to set up after cloning.'
+
+[[stack.cards]]
+title = 'Our scripts, views and templates'
+text = 'The avatar rail and member feed on the board, spent-to-estimate fractions, sprint reports, a roadmap with a Gantt chart, templates for the daily note, a task and a time debt, and a script that creates the next sprint.'
+
+[[stack.cards]]
+title = 'A working process'
+text = 'A sprint routine close to Scrum: planning, daily time logging, the board, a retrospective driven by reports. It was worn in by a real team rather than invented for a showcase.'
 
 [data]
 title = 'Data in your repository'

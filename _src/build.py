@@ -13,7 +13,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
-SECTIONS = ("hero", "data", "text", "agents", "workflow", "features", "limits", "start")
+SECTIONS = ("hero", "stack", "data", "text", "agents", "workflow", "features", "limits", "start")
 SITE_URL = "https://semenkhmelev.github.io/agile-obsidian-template/"
 
 PLACEHOLDER_RE = re.compile(r"{{\s*([\w.-]+)\s*}}")

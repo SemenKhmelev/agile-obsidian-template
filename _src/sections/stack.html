@@ -1,0 +1,18 @@
+<section class="section reveal" id="stack" aria-labelledby="stack-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">01 / STACK</p>
+      <h2 id="stack-title">{{stack.title}}</h2>
+      <p>{{stack.lead}}</p>
+    </div>
+    <div class="cards data-cards stack-cards">
+      <!-- BEGIN loop:stack.cards -->
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>{{item.title}}</h3>
+        <p>{{item.text}}</p>
+      </article>
+      <!-- END loop:stack.cards -->
+    </div>
+  </div>
+</section>

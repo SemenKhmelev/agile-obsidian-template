@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0f0d15">
   <title>agile-obsidian — спринт как папка с файлами</title>
-  <meta name="description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <meta name="description" content="Хранилище Obsidian для командных спринтов: настроенные плагины, свои скрипты, шаблоны и отчёты, готовый процесс. Доска, учёт времени и роадмап — markdown-файлами в вашем git-репозитории.">
   <link rel="canonical" href="https://semenkhmelev.github.io/agile-obsidian-template/">
   <link rel="alternate" hreflang="ru" href="https://semenkhmelev.github.io/agile-obsidian-template/">
   <link rel="alternate" hreflang="en" href="https://semenkhmelev.github.io/agile-obsidian-template/en/">
@@ -14,13 +14,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="agile-obsidian">
   <meta property="og:title" content="agile-obsidian — спринт как папка с файлами">
-  <meta property="og:description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <meta property="og:description" content="Хранилище Obsidian для командных спринтов: настроенные плагины, свои скрипты, шаблоны и отчёты, готовый процесс. Доска, учёт времени и роадмап — markdown-файлами в вашем git-репозитории.">
   <meta property="og:url" content="https://semenkhmelev.github.io/agile-obsidian-template/">
   <meta property="og:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
   <meta property="og:locale" content="ru">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="agile-obsidian — спринт как папка с файлами">
-  <meta name="twitter:description" content="Шаблон Obsidian для командных спринтов: доска, учёт времени, отчёты и роадмап обычными markdown-файлами в вашем git-репозитории. Без сервера и без API.">
+  <meta name="twitter:description" content="Хранилище Obsidian для командных спринтов: настроенные плагины, свои скрипты, шаблоны и отчёты, готовый процесс. Доска, учёт времени и роадмап — markdown-файлами в вашем git-репозитории.">
   <meta name="twitter:image" content="https://semenkhmelev.github.io/agile-obsidian-template/assets/img/og-image.png">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
@@ -32,6 +32,8 @@
     <div class="container nav-shell">
       <a class="brand" href="#top" aria-label="agile-obsidian">agile-obsidian</a>
       <nav class="site-nav" aria-label="agile-obsidian">
+        
+        <a href="#stack">Состав</a>
         
         <a href="#data">Данные</a>
         
@@ -56,10 +58,10 @@
   <div class="container hero-copy">
     <p class="eyebrow">Шаблон Obsidian для командных спринтов</p>
     <h1 id="hero-title">Спринт — это папка с файлами</h1>
-    <p class="hero-lead">Команда ведёт спринты в своём git-репозитории. Доска, учёт времени, отчёты и роадмап хранятся в markdown-файлах. Для работы не нужны сервер, API или стороннее облако.</p>
+    <p class="hero-lead">Хранилище Obsidian, собранное под разработку по спринтам: настроенные плагины, свои скрипты и шаблоны, готовый процесс. Доска, учёт времени, отчёты и роадмап хранятся markdown-файлами в вашем git-репозитории.</p>
     <div class="hero-actions">
       <a class="button button-primary" href="https://github.com/SemenKhmelev/agile-obsidian-template">Забрать шаблон</a>
-      <a class="button button-secondary" href="#data">Как это устроено</a>
+      <a class="button button-secondary" href="#stack">Как это устроено</a>
     </div>
     <p class="hero-note">159 спринтов в команде из 12 человек · MIT · всё содержимое в обычном тексте</p>
   </div>
@@ -71,10 +73,47 @@
   </div>
 </section>
 
+    <section class="section reveal" id="stack" aria-labelledby="stack-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-kicker">01 / STACK</p>
+      <h2 id="stack-title">Из чего это собрано</h2>
+      <p>Вы клонируете репозиторий и открываете его в Obsidian. Внутри уже лежит всё, что нужно команде для работы по спринтам: настроенные плагины, наши скрипты и шаблоны, демо-пример и сам процесс.</p>
+    </div>
+    <div class="cards data-cards stack-cards">
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Obsidian как рабочее место</h3>
+        <p>Локальные markdown-файлы, мгновенный поиск по всем спринтам, горячие клавиши, предпросмотр ссылок и палитра команд. Редактор бесплатный и ставится на все платформы.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Плагины, уже настроенные</h3>
+        <p>Kanban, Dataview, Templater, Charts, QuickAdd и Obsidian Git лежат в репозитории вместе с настройками. После клонирования донастраивать нечего.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Наши скрипты, вьюхи и шаблоны</h3>
+        <p>Панель аватарок и лента записей на доске, дроби «потрачено / оценка», отчёты спринта, роадмап с диаграммой Ганта, шаблоны записи за день, задачи и долга, скрипт создания следующего спринта.</p>
+      </article>
+      
+      <article class="card">
+        <span class="card-mark" aria-hidden="true"></span>
+        <h3>Готовый процесс</h3>
+        <p>Спринтовая схема, близкая к Scrum: планирование, ежедневный учёт времени, доска, ретро по отчётам. Схема обкатана командой, а не придумана для витрины.</p>
+      </article>
+      
+    </div>
+  </div>
+</section>
+
     <section class="section reveal" id="data" aria-labelledby="data-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">01 / DATA</p>
+      <p class="section-kicker">02 / DATA</p>
       <h2 id="data-title">Данные в вашем репозитории</h2>
       <p>В трекере остаются решения команды, затраченное время и причины изменений. В agile-obsidian эти записи хранятся в файлах, вместе с историей изменений в git.</p>
     </div>
@@ -105,7 +144,7 @@
     <section class="section reveal" id="text" aria-labelledby="text-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">02 / MARKDOWN</p>
+      <p class="section-kicker">03 / MARKDOWN</p>
       <h2 id="text-title">Одна строка — три представления</h2>
       <p>Добавьте строку в запись за день. Доска и отчёт прочитают её из того же файла и покажут потраченное время по задаче.</p>
     </div>
@@ -142,7 +181,7 @@
     <section class="section reveal" id="agents" aria-labelledby="agents-title">
   <div class="container">
     <div class="section-heading wide-heading">
-      <p class="section-kicker">03 / AI AGENTS</p>
+      <p class="section-kicker">04 / AI AGENTS</p>
       <h2 id="agents-title">Как AI-агент работает с задачами</h2>
       <p>AI-агент читает задачи и записи о времени прямо из репозитория. Правки вносит в те же markdown-файлы, с которыми работает команда.</p>
     </div>
@@ -226,7 +265,7 @@
     <section class="section reveal" id="workflow" aria-labelledby="workflow-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">04 / WORKFLOW</p>
+      <p class="section-kicker">05 / WORKFLOW</p>
       <h2 id="workflow-title">Цикл спринта</h2>
       <p>Каждые две недели команда проходит шесть шагов. Скрипт готовит новый спринт, участники ведут задачи и записи о времени, а отчёты собирают данные к ретро.</p>
     </div>
@@ -319,7 +358,7 @@
     <section class="section reveal" id="features" aria-labelledby="features-title">
   <div class="container">
     <div class="section-heading">
-      <p class="section-kicker">05 / FEATURES</p>
+      <p class="section-kicker">06 / FEATURES</p>
       <h2 id="features-title">Что внутри</h2>
       <p>В шаблон включены плагины и скрипты. Два демо-спринта вымышленной команды показывают, как устроена работа.</p>
     </div>
@@ -390,7 +429,7 @@
     <section class="section reveal" id="limits" aria-labelledby="limits-title">
   <div class="container limits-layout">
     <div class="section-heading">
-      <p class="section-kicker">06 / LIMITS</p>
+      <p class="section-kicker">07 / LIMITS</p>
       <h2 id="limits-title">Ограничения</h2>
       <p>При выборе шаблона стоит учесть несколько ограничений.</p>
     </div>
@@ -413,7 +452,7 @@
     <section class="section start-section reveal" id="start" aria-labelledby="start-title">
   <div class="container start-card">
     <div class="section-heading">
-      <p class="section-kicker">07 / START</p>
+      <p class="section-kicker">08 / START</p>
       <h2 id="start-title">Попробовать</h2>
       <p>Открыть первую доску можно за пять минут, включая установку Obsidian.</p>
     </div>

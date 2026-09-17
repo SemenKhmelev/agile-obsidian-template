@@ -443,6 +443,11 @@ button.window {
   gap: 16px;
 }
 
+/* Четыре карточки состава: два на два, чтобы последняя не висела одна в ряду. */
+.stack-cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .card,
 .feature-card {
   position: relative;
